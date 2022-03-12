@@ -1,0 +1,787 @@
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\begin{itemize}
+\tightlist
+\item
+  Based on what we have seen so far, at the moment renewal of your
+  contract is more unlikely than likely, but we are giving you a chance
+  to change this.
+\item
+  The renewal decision will be made in April, that is about 6 months
+  before the end of current contract, so that you will have time for
+  arrangements if the contract will not be renewed. The decision will be
+  heavily influenced by what you can show us until then.
+\item
+  So far you have had two main tasks:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi})}
+  \tightlist
+  \item
+    help with LOO-uncertainty paper,
+  \item
+    first author the continuation paper.
+  \end{enumerate}
+\item
+  We have allowed you to have side projects, which seems to have been a
+  mistake as you have now been doing many projects (many of them not
+  related to the funding), but none of them demonstrate that you would
+  be able to finish papers or thesis.
+\item
+  Recently you have made it more clear that you are not motivated to do
+  2, and we did first discuss with you that you could do something
+  slightly different. As we're now running out of time, we need to
+  choose a topic that is familiar for you and related to the funding.
+\item
+  We want you to write a ``minipaper'' that
+
+  \begin{itemize}
+  \tightlist
+  \item
+    showcases you can write a coherent ``story'' that makes sense from
+    beginning till end,
+  \item
+    quality- and structurewise should be like a paper,
+  \item
+    from the amount of content need not be like a paper,
+  \item
+    can have theory (proofs), but we highly recommend you focus on
+    simulations as you already have done similar simulations and it
+    seems like you can get stuck with the proofs,
+  \item
+    ideally forms the basis for an actual paper.
+  \end{itemize}
+\item
+  It does not matter if the results themselves are not interesting
+  enough to be included in a paper.
+\item
+  Before hiring you, we also discussed that you need to improve your
+  English skills. This minipaper doesn't need to be perfect, but it
+  should show that you have improved your English.
+\item
+  You can add content to the outline after we discuss this and if we
+  agree that it makes sense.
+\item
+  If you have any questions or problems you can always contact me.
+\end{itemize}
+
+\hypertarget{comments}{%
+\subsection{Comments}\label{comments}}
+
+\begin{itemize}
+\tightlist
+\item
+  Please be careful with the notation!
+\item
+  Please be careful with the definitions!
+\item
+  Please avoid unnecessary ``Definition'', ``Lemma'' or ``Theorem''
+  blocks!
+\item
+  Please be careful to appropriately reference sources!
+\item
+  Please be careful when you make assertions!
+\item
+  Please explain everything as simply and explicitly as possible to
+  avoid ambiguity!
+\item
+  Please be very careful with mathematical proofs!
+\item
+  Comprehensively describe experimental settings!
+\end{itemize}
+
+\hypertarget{overarching-goal}{%
+\subsection{Overarching goal}\label{overarching-goal}}
+
+\begin{itemize}
+\tightlist
+\item
+  In LOO uncertainty paper, we say that if
+  \textbar{}\(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\)\textbar{}\textless{}4,
+  then \(\widehat{\mathrm{SE}}_\mathrm{LOO}(M_A, M_B | y)\) can be
+  underestimated and there may be significant skewness ignored by normal
+  approximation, but we also say that then the models have still small
+  difference.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    demonstrate with simulation the maximum loss in predictive
+    performance and parameter point estimation if either model is
+    selected when
+    \textbar{}\(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\)\textbar{}\textless{}4,
+  \item
+    possible sketch of the corresponding analytic solution,
+  \item
+    the same simulations will also show that 4 is reasonable threshold,
+  \item
+    analytic justification can be obtained by examining the
+    KL-divergence from the true distribution to either model A or model
+    B predictive distribution.
+  \end{itemize}
+\item
+  Sometimes users also compute LOO-weights or LOO-BB-weights and get
+  different result than with
+  \(\widehat{P}(\mathrm{elpd}(M_A, M_B | y) > 0)\). As analysis of
+  LOO-BB-weights is more complicated, we simplify by looking at
+  LOO-SE-weights in two model case (note that LOO-SE-weights in the
+  stacking paper are wrong).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    add LOO-weights and LOO-SE-weights to the simulation,
+  \item
+    as SE can be underestimated, explain analytically how that
+    underestimation affects
+    \(\widehat{P}(\mathrm{elpd}(M_A, M_B | y) > 0)\) and LOO-SE-weights,
+    and how LOO-weights correspond to
+    \(\widehat{\mathrm{SE}}_\mathrm{LOO}(M_A, M_B | y)\)=0,
+  \item
+    explain what special there is in LOO-weights and LOO-SE-weights if
+    \textbar{}\(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\)\textbar{}\textless{}4.
+  \end{itemize}
+\end{itemize}
+
+Based on the results should we recommend
+\(\widehat{P}(\mathrm{elpd}(M_A, M_B | y) > 0)\) or LOO-SE/BB-weights? I
+think \(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\) and
+\(\widehat{\mathrm{SE}}_\mathrm{LOO}(M_A, M_B | y)\) together tell more
+than either \(\widehat{P}(\mathrm{elpd}(M_A, M_B | y) > 0)\) or
+LOO-SE/BB-weight alone, and would assume examining
+\(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\) and
+\(\widehat{P}(\mathrm{elpd}(M_A, M_B | y) > 0)\) is a good
+recommendation.
+
+\textbf{Empirically and (only if possible) theoretically validate and
+extend LOO recommendations that we can give users.}
+
+\textbf{FOR NOW EVERYTHING ONLY FOR TWO MODELS}
+
+Recommendations should include what to do if
+
+\begin{itemize}
+\tightlist
+\item
+  \(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\) is small and
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\widehat{\mathrm{SE}}_\mathrm{LOO}(M_A, M_B | y)\) is small or
+  \item
+    \(\widehat{\mathrm{SE}}_\mathrm{LOO}(M_A, M_B | y)\) is large
+  \end{itemize}
+\item
+  \(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\) is large and
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\widehat{\mathrm{SE}}_\mathrm{LOO}(M_A, M_B | y)\) is small or
+  \item
+    \(\widehat{\mathrm{SE}}_\mathrm{LOO}(M_A, M_B | y)\) is large
+  \end{itemize}
+\end{itemize}
+
+and should include explanations why different methods may give different
+results.
+
+You should compare
+
+\begin{itemize}
+\tightlist
+\item
+  in the setting of two (nested) models
+\item
+  using simulations and theory (only if immediate!)
+\item
+  different methods to weigh/rank/select models
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\widehat{P}(\mathrm{elpd}(M_A, M_B | y) > 0)\),
+  \item
+    LOO-weights,
+  \item
+    LOO-SE weights and
+  \item
+    LOO-BB weights
+  \end{itemize}
+\item
+  for different model sets (reuse your experiments from github!),
+\item
+  and using different metrics
+
+  \begin{itemize}
+  \tightlist
+  \item
+    true expected log pointwise predictive density
+    \(\mathrm{elpd}(M_A | y)\) and
+  \item
+    root mean square error (RMSE) of the parameter point estimate.
+  \end{itemize}
+\end{itemize}
+
+Please correctly introduce (with references where appropriate) and
+explain (as much as needed)
+
+\begin{itemize}
+\tightlist
+\item
+  true expected log pointwise predictive density
+  \(\mathrm{elpd}(M_A | y)\),
+\item
+  pairwise elpd difference \(\mathrm{elpd}(M_A, M_B | y)\),
+\item
+  LOO-estimate of the elpd
+  \(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A | y)\),
+\item
+  LOO-estimate of the elpd difference
+  \(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\),
+\item
+  standard error estimate of the LOO-estimate of the elpd difference
+  \(\widehat{\mathrm{SE}}_\mathrm{LOO}(M_A, M_B | y)\),
+\item
+  estimated probability of true elpd\_diff \textgreater{} 0
+  \(\widehat{P}(\mathrm{elpd}(M_A, M_B | y) > 0)\),
+\item
+  LOO-weights,
+\item
+  LOO-SE weights,
+\item
+  LOO-BB weights,
+\item
+  differences and connections between the different weights/rankings
+\item
+  reasons why different methods give different rankings
+\end{itemize}
+
+and anything else which will be used / needed.
+
+As discussed previously, if you notice any pattern that you believe
+could hold more generally, write this down as a conjecture! There is no
+need to prove them, especially if this may take an excessive amount of
+time!
+
+\hypertarget{practical-loo-for-model-comparison}{%
+\section{Practical LOO for model
+comparison}\label{practical-loo-for-model-comparison}}
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+\hypertarget{methods}{%
+\subsection{Methods}\label{methods}}
+
+\begin{itemize}
+\tightlist
+\item
+  Models:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Experiments from your github (these could be enough)
+  \end{itemize}
+\item
+  Conjectures (simulations reveal a pattern which we might believe holds
+  generally)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Unless proof is immediate, skip it
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{results}{%
+\subsection{Results}\label{results}}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathrm{elpd}(M_A, M_B | y)\) \textless{} 4: Models are similar.
+  What does this imply? (\(\mathrm{elpd}(M_A | y)\) and RMSE)
+\end{itemize}
+
+What are the cases when the difference between two models is small
+anyways, even if e.g.~P(\(\mathrm{elpd}(M_A | y)\) \textgreater{} 0) is
+small.
+
+\begin{itemize}
+\item
+  No stacking
+\item
+  \(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A | y)\) ranking vs
+  \(\mathrm{sv\_elpd}_\mathrm{LOO}(M_A, M_B | y)\) weights/ranking
+\item
+  if something is defined in the loo-uncertainty draft you can use it
+\item
+  Validate and extend LOO recommendations
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Questions and answers provided by Aki
+  \end{itemize}
+\item
+  You don't need to invent anything
+\item
+  If you can find additional patterns/connections that is good but not
+  necessary.
+\item
+  SNR + horsehoe + detection threshold (Juho Piironen)
+\end{itemize}
+
+\hypertarget{discussion}{%
+\subsection{Discussion}\label{discussion}}
+
+TBD
+
+\hypertarget{sources-with-topics}{%
+\subsection{Sources with topics}\label{sources-with-topics}}
+
+\textbf{Authors in parenthesis are not necessarily originators of ideas}
+
+\hypertarget{to-select-or-not-to-select-aki}{%
+\subsubsection{``To select or not to select''
+(Aki)}\label{to-select-or-not-to-select-aki}}
+
+\textbf{WILL BE REMOVED FOR ASAEL}
+
+Compare
+
+\begin{itemize}
+\tightlist
+\item
+  using
+
+  \begin{itemize}
+  \tightlist
+  \item
+    simulations or
+  \item
+    theory where possible
+  \end{itemize}
+\item
+  for non-zero but potentially small model difference \(\beta\)
+\item
+  different methods to combine a given set of model candidates,
+  including using weights from
+
+  \begin{itemize}
+  \tightlist
+  \item
+    BMA,
+  \item
+    BMA+,
+  \item
+    stacking,
+  \item
+    model selection using different criteria, e.g.~use the smaller model
+
+    \begin{itemize}
+    \tightlist
+    \item
+      always,
+    \item
+      if BF \textless{} delta (\textbf{maybe}),
+    \item
+      if \ldots{}
+    \item
+      never,
+    \end{itemize}
+  \end{itemize}
+\item
+  for different model candidate sets, including
+
+  \begin{itemize}
+  \tightlist
+  \item
+    y \(\sim\) 1 vs y \(\sim\) x with
+
+    \begin{itemize}
+    \tightlist
+    \item
+      wide prior on model difference or
+    \item
+      (R)HS prior on model difference
+    \end{itemize}
+  \item
+    y \(\sim\) x1+x2+x3+x4+x5 vs y \(\sim\) x1+x2+x3+x4+x5+x6
+  \item
+    y \(\sim\) x vs y \(\sim\) s(x)
+  \item
+    y \(\sim\) x vs y \(\sim\) x + (x\textbar{}g)
+  \item
+    y \(\sim\) x with
+
+    \begin{itemize}
+    \tightlist
+    \item
+      family=normal vs family=t or
+    \item
+      family=poisson vs family=negbin
+    \end{itemize}
+  \item
+    more than two model candidates (\textbf{later}), including
+
+    \begin{itemize}
+    \tightlist
+    \item
+      y \(\sim\) 1 vs y \(\sim\) x1 vs y \(\sim\) x2 vs y \(\sim\) x1 +
+      x2 with correlating x1 and x2,
+    \item
+      y \(\sim\) x1 vs y \(\sim\) x2 vs y \(\sim\) x1 + x2 vs y \(\sim\)
+      x1 + x2 + x1*x2 with an interaction term which correlates with
+      main effects,
+    \end{itemize}
+  \item
+    other models as e.g.~in
+    \href{http://dx.doi.org/10.48550/arXiv.2008.10296}{{[}Sivula20{]}},
+  \end{itemize}
+\item
+  using different metrics, including
+
+  \begin{itemize}
+  \tightlist
+  \item
+    (loss of) predictive accuracy as measured by the true expected log
+    pointwise predictive density \(\mathrm{elpd}(M_A | y)\),
+  \item
+    root mean square error (RMSE) of parameter estimates and/or other
+    metrics
+  \end{itemize}
+\item
+  visualized with (x,y,color) corresponding to e.g.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    (beta, metric, method) and more.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{personal-communcations-aki}{%
+\subsubsection{Personal communcations
+(Aki)}\label{personal-communcations-aki}}
+
+\begin{itemize}
+\tightlist
+\item
+  Plots (row, col, x, y, color):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    (N/A, \(\widehat{\mathrm{SE}}_\mathrm{LOO}(M_A, M_B | y)\),
+    \(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\), weight,
+    method)
+  \item
+    (N/A, metric (\(\mathrm{elpd}(M_A | y)\)/rmse), beta, metric,
+    method)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{using-uncertainty-for-model-comparison-asael}{%
+\subsubsection{``Using uncertainty for model comparison''
+(Asael)}\label{using-uncertainty-for-model-comparison-asael}}
+
+\begin{itemize}
+\tightlist
+\item
+  estimated probability of true elpd\_diff \textgreater{} delta
+  \(P(\mathrm{elpd}(M_A, M_B | y) > \delta)\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    student-t approach
+  \end{itemize}
+\item
+  show that w\_a \textless{} w\_a+ for w\_a \textless{} 1/2 if w\_a+
+  from normal approximation (\textbf{don't include})
+
+  \begin{itemize}
+  \tightlist
+  \item
+    what if w\_a+ from BB? (\textbf{don't include})
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{practical-recommendations-for-considering-the-uncertainty-in-bayesian-model-comparison-with-leave-one-out-cross-validation-tuomas-mans-aki}{%
+\subsubsection{``Practical recommendations for considering the
+uncertainty in Bayesian model comparison with leave-one-out
+cross-validation'' (Tuomas, Mans,
+Aki)}\label{practical-recommendations-for-considering-the-uncertainty-in-bayesian-model-comparison-with-leave-one-out-cross-validation-tuomas-mans-aki}}
+
+\hypertarget{introduction-1}{%
+\paragraph{Introduction}\label{introduction-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  when can LOO model comparison be trusted?
+\item
+  small number of models
+\item
+  contrast LOO with BMA
+\item
+  use \(\mathrm{sv\_elpd}_\mathrm{LOO}(M_A, M_B | y)\) weights
+\end{itemize}
+
+\hypertarget{practical-recommendations}{%
+\paragraph{Practical recommendations}\label{practical-recommendations}}
+
+\begin{itemize}
+\tightlist
+\item
+  Recommendations to assess whether LOO estimates are reliable
+\item
+  theory and experiments =\textgreater{} recommended thresholds
+\item
+  \(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\) assumed to be
+  exactly computed
+\item
+  \textbar{}\(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\)\textbar{}
+  \textless{} 4:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    LOO estimates likely to have bias and/or high variance/skew
+  \item
+    LOO can provide no reliable assessment
+  \end{itemize}
+\item
+  \textbar{}\(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A, M_B | y)\)\textbar{}
+  \textgreater{} 4:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    assess diagnostics (k\_hat, PPC, LOO-PIT) and sample size
+  \item
+    if diagnostics for better model are fine, it's probably safe to pick
+    (bad diagnostics usually lead to overoptimistic
+    \(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A | y)\) estimates)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{bayesian-model-averaging}{%
+\paragraph{Bayesian model averaging}\label{bayesian-model-averaging}}
+
+\begin{itemize}
+\tightlist
+\item
+  Introduce PBMA as an approximation to BMA and expression for weights
+\item
+  Introduce PBMA+
+  (\href{http://dx.doi.org/10.1214/17-BA1091}{{[}Yao18{]}})
+\item
+  Introduce \(\mathrm{sv\_elpd}_\mathrm{LOO}(M_A, M_B | y)\) weights and
+  \(P(\mathrm{elpd}(M_A, M_B | y) > \delta)\) (with \(\delta = 0\))
+\end{itemize}
+
+\hypertarget{connection-to-bma}{%
+\paragraph{Connection to BMA}\label{connection-to-bma}}
+
+\begin{itemize}
+\tightlist
+\item
+  Quality of exposition degrades
+\end{itemize}
+
+\hypertarget{analysis-of-loo-bb}{%
+\subparagraph{Analysis of LOO-BB}\label{analysis-of-loo-bb}}
+
+\begin{itemize}
+\tightlist
+\item
+  Discussion of plots (row, col, x, y, color):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    (beta, n, w\_a, w\_a+ (BB), point density)
+  \item
+    (beta, n, \(P(\mathrm{elpd}(M_A, M_B | y) > \delta)\), w\_a+ (BB),
+    point density)
+  \item
+    (beta, n, w\_a, w\_a+ (BB), point density)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{practical-loo-for-model-comparison-oriol-osvaldo}{%
+\subsubsection{``practical loo for model comparison'' (Oriol,
+Osvaldo)}\label{practical-loo-for-model-comparison-oriol-osvaldo}}
+
+\begin{itemize}
+\tightlist
+\item
+  How to select models?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    no SBC, ``just'' simulations
+  \item
+    effect of noisy data
+  \item
+    how often do we pick which model as a function of
+
+    \begin{itemize}
+    \tightlist
+    \item
+      effect size,
+    \item
+      sample size and more,
+    \end{itemize}
+  \item
+    evaluate/compare behavior of using
+    \(\mathrm{elpd}(M_A | y)\)/BMA/stacking:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      is one method always superior/inferior?
+    \item
+      does this depend on the goal?
+    \item
+      ``error'' of choosing
+
+      \begin{itemize}
+      \tightlist
+      \item
+        the more complex model,
+      \item
+        the model with best \(\mathrm{elpd}(M_A | y)\),
+      \item
+        model based on BF,
+      \item
+        weights using BMA,
+      \end{itemize}
+    \item
+      evaluate ``selection performance''
+
+      \begin{itemize}
+      \tightlist
+      \item
+        can a hard threshold be defended? (unlikely)
+      \end{itemize}
+    \item
+      evaluate predictive performance
+    \item
+      when to use CV/predictive methods for model comparison?
+
+      \begin{itemize}
+      \tightlist
+      \item
+        m-open/-closed/-complete
+      \item
+        examples when LOO works or does not work,
+      \item
+        rule of thumb?
+      \end{itemize}
+    \item
+      LOO diagnostics in practice?
+
+      \begin{itemize}
+      \tightlist
+      \item
+        bad k\_hats?
+      \end{itemize}
+    \item
+      LOO vs LOGO vs k-fold?
+    \item
+      discuss (briefly) how LOO compares to BF
+    \item
+      other scoring rules?
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{loo-subworkflow-oriol-osvaldo}{%
+\subsubsection{``loo subworkflow'' (Oriol,
+Osvaldo)}\label{loo-subworkflow-oriol-osvaldo}}
+
+\begin{itemize}
+\tightlist
+\item
+  PPC to discard grossly misspecified models (\textbf{don't include})
+\item
+  Sometimes CV is not needed. When, when not? (\textbf{don't include})
+\item
+  Large k-hat values? (\textbf{don't include})
+\item
+  Model expansion (Poisson=\textgreater{}negative binomial,
+  Gaussian=\textgreater{}student t,
+  pooled\textbar{}unpooled=\textgreater{}hierarchical)
+\item
+  When to choose simpler (special case of bigger) model? (\textbf{don't
+  include})
+\item
+  Should LOO only be used for small number of models with clear
+  difference? (\textbf{don't include})
+\item
+  SBC for \(\widehat{\mathrm{elpd}}_\mathrm{LOO}(M_A | y)\)
+  (\textbf{don't include any of this})
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Investigate impact of k-hat distribution on reliability of rankings
+  \item
+    \(\mathrm{elpd}(M_A, M_B | y)\) rule of thumb?
+    (e.g.~\(\mathrm{elpd}(M_A, M_B | y)\) \textgreater{} 4)
+  \item
+    LOO vs LOGO vs k-fold
+  \end{itemize}
+\item
+  LOO (\textbf{don't include any of this})
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Pitfalls/limits? How to fix/circumvent?:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Sample size?\\
+    \item
+      Non-robust models?
+    \item
+      BF estimates?
+    \end{itemize}
+  \item
+    Strengths
+
+    \begin{itemize}
+    \tightlist
+    \item
+      MCMC draws variation has little impact
+    \item
+      built-in failure diagnostics
+    \item
+      tool for model exploration
+    \end{itemize}
+  \item
+    How do k-hats change when model complexity increases?
+  \item
+    Plots (col,x,y,color):
+
+    \begin{itemize}
+    \tightlist
+    \item
+      color scale, elpd\_loo\_i, elpd\_psisloo\_i, k\_hat\_i
+    \item
+      color scale, elpd\_psis\_loo\_i, ml\_smc(?), k\_hat\_i
+    \item
+      y, k\_hat\_i, elpd\_psis\_loo\_i or elpd\_loo\_i, None
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
