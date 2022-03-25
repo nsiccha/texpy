@@ -1,0 +1,44 @@
+# Currently parsed implicitly:
+
+(but)
+
+Binary operations:
+  a < b
+  a > b
+  a = b
+  a != b
+  a >= b
+  a <= b
+  a - b
+  a + b
+  a / b
+  a * b
+  a := b
+  a | b
+  a @ b
+Function calls:
+  f(x)
+  f[x]
+Tuples: (trailing comma needed for single element tuple)
+  (a,) (trailing comma needed)
+  (a,b)
+  (a,b,)
+  (a,b,c)
+  (a,b,c,)
+Lists: (trailing comma optional)
+  [a] (trailing comma not needed)
+  [a,]
+Sets: (trailing comma needed for single element set)
+  {a,} (trailing comma needed)
+  {a,b}
+  {a,b,c}
+
+# Currently not parsed implicitly:
+
+# Enable explicit parsing:
+
+Wrap an expression in curly braces:
+
+What if there is a, b, c and a comma?
+  vs
+What if there is {a}, {b}, {c} and a comma?
