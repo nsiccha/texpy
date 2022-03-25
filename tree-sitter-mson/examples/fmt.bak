@@ -1,0 +1,56 @@
+```
+hi
+```
+-----
+# Headers
+
+* a list
+
+* a list
+* with two elements
+
+* a list
+  * a nested list
+
+* a list element
+spanning two lines
+
+* a list element
+spanning two lines
+* another list element
+
+[1]: http://github.com
+[github]: http://github.com
+
+---
+
+plain text
+
+plain text
+spanning two lines
+
+_italic_
+
+*italic*
+
+__bold__
+
+**bold**
+
+***bold italic***
+
+___bold italic___
+
+~~strikethrough~~
+
+`verbatim`
+
+plain, *italic*, **bold** and ***bolditalic***
+
+[Github](http://github.com)
+
+[Github][1]
+
+[Github][github]
+
+(an interjection)

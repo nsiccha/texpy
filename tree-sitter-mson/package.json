@@ -9,9 +9,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nan": "^2.15.0"
+    "nan": "^2.15.0",
+    "tree-sitter-cli": "^0.20.6"
   },
-  "devDependencies": {
-    "tree-sitter-cli": "^0.20.0"
-  }
+  "tree-sitter": [
+    {
+      "scope": "source.mson",
+      "file-types": [
+        "mson"
+      ]
+    }
+  ]
 }
