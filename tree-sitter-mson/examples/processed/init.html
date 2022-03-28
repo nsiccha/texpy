@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>init</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="explicit-control">EXPLICIT CONTROL:</h1>
+<p>Enable explicit processing with curly brackets. For inline processing use (a) without new lines and for block processing use [a] with at least one new line (and optional indentation). Labeling works as (a) or [a] Anything inside curly brackets has to be a valid expression.</p>
+<p>Enable explicit inline latex math with (a) and explicit block latex math with [a.] No processing is performed and nothing is enforced for explicit latex math.</p>
+<p>No processing is performed inside inline markdown formatting such as <em>italic</em>, <strong>bold</strong>, <strong><em>bolditalic</em></strong>, <del>strikethrough</del>, <code>verbatim</code> or <a href="http://github.com">links</a>. Processing is performed inside “block” markdown formatting such as headers, lists or quotes.</p>
+<p>Calls: (f(x)), (f[x]) or (f{x}). Tuples: (()), ((a,)), ((a,b,)), ((a,b,c)) Lists: ([]), ([a]), ([a,]), ([a,b,]), ([a,b,c]) Sets: ({}), ({a}), ({a,}), ({a,b,}), ({a,b,c})</p>
+<p>Unary and binary operations: [<span class="citation" data-cites="b">[ -a, +a, a-b, a+b, a*b, a/b, a\b, a@b, a|b, a=b, a&lt;b, a&gt;b, a%b, a^b, a!=b, a&gt;=b, a&lt;=b, a&lt;&lt;b, a&gt;&gt;b, a//b, a/*b, a/@b, ]</span>]</p>
+<pre><code>
+
+
+
+
+# IMPLICIT PROCESSING:
+
+Disable implicit processing with md-code fences.
+Anything for which processing begins with an indented new line will be
+block processed, otherwise it will be inline processed.
+
+Any valid binary mathematical operation will enter processing mode
+except for `-`, `@` and word operators such as `in`.
+
+For example, will be processed, but non-positive or foo@bar.com won&#39;t be.
+
+Valid tuples (a,b,c), lists [a,b,c] and sets {a,b,c} will be processed as well.
+Single element containers require a trailing comma such as (a,), [b,] or {c,}.
+</code></pre>
+</body>
+</html>

@@ -1,13 +1,9 @@
 # EXPLICIT CONTROL:
 
 Enable explicit processing with curly brackets.
-For inline processing use {a} without new lines and
-for block processing use {
-  a
-} with at least one new line (and optional indentation).
-Labeling works as {label:a} or {label:
-  a
-}
+For inline processing use \(a\) without new lines and
+for block processing use \[a\] with at least one new line (and optional indentation).
+Labeling works as \(a\) or \[a\]
 Anything inside curly brackets has to be a valid expression.
 
 Enable explicit inline latex math with \(a\) and
@@ -20,13 +16,12 @@ such as *italic*, **bold**, ***bolditalic***, ~~strikethrough~~, `verbatim` or
 formatting such as headers, lists or quotes.
 
 
-Calls: {f(x)}, {f[x]} or {f{x}}.
-Tuples: {()}, {(a,)}, {(a,b,)}, {(a,b,c)}
-Lists: {[]}, {[a]}, {[a,]}, {[a,b,]}, {[a,b,c]}
-Sets: {{}}, {{a}}, {{a,}}, {{a,b,}}, {{a,b,c}}
+Calls: \(f(x)\), \(f[x]\) or \(f{x}\).
+Tuples: \(()\), \((a,)\), \((a,b,)\), \((a,b,c)\)
+Lists: \([]\), \([a]\), \([a,]\), \([a,b,]\), \([a,b,c]\)
+Sets: \({}\), \({a}\), \({a,}\), \({a,b,}\), \({a,b,c}\)
 
-Unary and binary operations: {
-  [
+Unary and binary operations: \[[
   -a,
   +a,
   a-b,
@@ -49,8 +44,7 @@ Unary and binary operations: {
   a//b,
   a/*b,
   a/@b,
-  ]
-}
+  ]\]
 ```
 
 

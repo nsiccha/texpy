@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "nan": "^2.15.0",
-    "tree-sitter-cli": "^0.20.6"
+    "tree-sitter-cli": "^0.20.4"
   },
   "tree-sitter": [
     {
