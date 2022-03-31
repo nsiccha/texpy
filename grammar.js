@@ -1,3 +1,28 @@
+// https://github.com/tree-sitter/tree-sitter-python/blob/master/grammar.js
+const PREC = {
+  // this resolves a conflict between the usage of ':' in a lambda vs in a
+  // typed parameter. In the case of a lambda, we don't allow typed parameters.
+  lambda: -2,
+  typed_parameter: -1,
+  conditional: -1,
+
+  parenthesized_expression: 1,
+  parenthesized_list_splat: 1,
+  not: 1,
+  compare: 2,
+  or: 10,
+  and: 11,
+  bitwise_or: 12,
+  bitwise_and: 13,
+  xor: 14,
+  shift: 15,
+  plus: 16,
+  times: 17,
+  unary: 18,
+  power: 19,
+  call: 20,
+}
+
 module.exports = grammar({
   name: 'mson',
   externals: $ => [
@@ -24,60 +49,87 @@ module.exports = grammar({
     fence: $ => seq('```', optional(/[a-z]+/)),
     // fence_tag: $ => /[a-z]+/,
 
-    // parse_token: $ => seq('{', optional($.label),  $._expression, '}'),
+    // parse_token: $ => seq('{', optional($.label),  $.expression, '}'),
     parse_token: $ => choice(
       $.inline_parse_token,
       $.block_parse_token
     ),
-    inline_parse_token: $ => seq('{', optional($.label), $._expression, '}'),
-    block_parse_token: $ => seq('{', optional($.label), '\n', $._expression, '}'),
+    inline_parse_token: $ => seq('{',
+      field('label', optional($.label)), field('expression', $.expression),
+    '}'),
+    block_parse_token: $ => seq('{',
+      field('label', optional($.label)), '\n',
+      field('expression', $.expression), optional($.punctuation),
+    '}'),
     label: $ => seq($.identifier, ':'),
-    _expression: $ => choice(
+    punctuation: $ => /[,.?]/,
+    expression: $ => choice(
       $.call,
       $.parenthesised_expression,
+      $.dot_expression,
       $.container,
       $.operation,
       $.identifier,
       $.literal
     ),
-    call: $ => seq($._expression, choice(
+    call: $ => prec(PREC.call, seq($.expression, choice(
         seq('(', optional($.comma_separated_expressions), ')'),
         seq('[', optional($.comma_separated_expressions), ']'),
         seq('{', optional($.comma_separated_expressions), '}')
-    )),
-    parenthesised_expression: $ => seq('(', $._expression, ')'),
+    ))),
+    parenthesised_expression: $ => seq('(', $.expression, ')'),
+    dot_expression: $ => seq('<', $.expression, ',', $.expression, '>'),
     // call_args: $ => seq($.comma_separated_expressions, optional(',')),
     comma_separated_expressions: $ => seq(
-        $._expression, repeat(seq(',', $._expression))
+        $.expression, repeat(seq(',', $.expression))
     ),
     container: $ => choice($.tuple, $.list, $.set),
     tuple: $ => seq('(', ochoice(
-      seq($._expression, ','),
-      seq($._expression, repeat1(seq(',', $._expression)), optional(','))
+      seq($.expression, ','),
+      seq($.expression, repeat1(seq(',', $.expression)), optional(','))
     ), ')'),
     list: $ => seq('[', ochoice(
-      seq($._expression, repeat(seq(',', $._expression)), optional(','))
+      seq($.expression, repeat(seq(',', $.expression)), optional(','))
     ), ']'),
     set: $ => seq('{', ochoice(
-      seq($._expression, repeat(seq(',', $._expression)), optional(','))
+      seq($.expression, repeat(seq(',', $.expression)), optional(','))
     ), '}'),
     operation: $ => choice($.unary_operation, $.binary_operation),
-    unary_operation: $ => prec.left(2, seq(
-      $.unary_operator, $._expression
+    unary_operation: $ => prec.left(PREC.unary, seq(
+      $.unary_operator, $.expression
     )),
     unary_operator: $ => choice('-', '+'),
-    binary_operation: $ => prec.left(1, seq(
-      $._expression, $.binary_operator, $._expression
-    )),
+    binary_operation: $ => choice(
+      prec.left(PREC.compare, seq(
+        $.expression, choice('=', '<', '>', '~', ':=', '!=', '>=', '<=', '<<', '>>'), $.expression
+      )),
+      prec.left(PREC.plus, seq(
+        $.expression, choice('+', '-'), $.expression
+      )),
+      prec.left(PREC.times, seq(
+        $.expression, choice('*', '/', '\\', '@', '%'), $.expression
+      )),
+      prec.left(PREC.power, seq(
+        $.expression, choice('^', '**'), $.expression
+      )),
+      prec.left(1, seq(
+        $.expression, $.binary_operator, $.expression
+      ))
+    ),
+    // binary_operation: $ => prec.left(1, seq(
+    //   $.expression, $.binary_operator, $.expression
+    // )),
     binary_operator: $ => choice(
-      /[-+*/@|=<>%\\^]/,
-      '**',
-      ':=', '->',
-      '!=', '>=', '<=', '<<', '>>',
+      '|',
+      // '**',
+      '->',
+      // '!=', '>=', '<=', '<<', '>>',
       '//', '/*', '/@',
+      'approx', 'in', 'not in', 'iff', '::'
       // seq($._w, choice('approx', 'not in', 'in'), $._w)
     ),
-    identifier: $ => /[a-z]+/,
+    // attribute: $ => seq($.identifier, '.', $.identifier),
+    identifier: $ => /[a-zA-Z_]+/,
     literal: $ => /[0-9]+/,
 
     // text_token: $ => $._anyword,

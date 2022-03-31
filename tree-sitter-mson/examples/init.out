@@ -2,23 +2,27 @@
   (text_token [0, 0] - [3, 26])
   (parse_token [3, 26] - [3, 29]
     (inline_parse_token [3, 26] - [3, 29]
-      (identifier [3, 27] - [3, 28])))
+      expression: (expression [3, 27] - [3, 28]
+        (identifier [3, 27] - [3, 28]))))
   (text_token [3, 29] - [4, 25])
   (parse_token [4, 25] - [6, 1]
     (block_parse_token [4, 25] - [6, 1]
-      (identifier [5, 2] - [5, 3])))
+      expression: (expression [5, 2] - [5, 3]
+        (identifier [5, 2] - [5, 3]))))
   (text_token [6, 1] - [7, 18])
   (parse_token [7, 18] - [7, 27]
     (inline_parse_token [7, 18] - [7, 27]
-      (label [7, 19] - [7, 25]
+      label: (label [7, 19] - [7, 25]
         (identifier [7, 19] - [7, 24]))
-      (identifier [7, 25] - [7, 26])))
+      expression: (expression [7, 25] - [7, 26]
+        (identifier [7, 25] - [7, 26]))))
   (text_token [7, 27] - [7, 31])
   (parse_token [7, 31] - [9, 1]
     (block_parse_token [7, 31] - [9, 1]
-      (label [7, 32] - [7, 38]
+      label: (label [7, 32] - [7, 38]
         (identifier [7, 32] - [7, 37]))
-      (identifier [8, 2] - [8, 3])))
+      expression: (expression [8, 2] - [8, 3]
+        (identifier [8, 2] - [8, 3]))))
   (text_token [9, 1] - [12, 39])
   (latex_token [12, 39] - [12, 44]
     (inline_latex_token [12, 39] - [12, 44]))
@@ -31,228 +35,321 @@
   (text_token [17, 75] - [22, 7])
   (parse_token [22, 7] - [22, 13]
     (inline_parse_token [22, 7] - [22, 13]
-      (call [22, 8] - [22, 12]
-        (identifier [22, 8] - [22, 9])
-        (comma_separated_expressions [22, 10] - [22, 11]
-          (identifier [22, 10] - [22, 11])))))
+      expression: (expression [22, 8] - [22, 12]
+        (call [22, 8] - [22, 12]
+          (expression [22, 8] - [22, 9]
+            (identifier [22, 8] - [22, 9]))
+          (comma_separated_expressions [22, 10] - [22, 11]
+            (expression [22, 10] - [22, 11]
+              (identifier [22, 10] - [22, 11])))))))
   (text_token [22, 13] - [22, 15])
   (parse_token [22, 15] - [22, 21]
     (inline_parse_token [22, 15] - [22, 21]
-      (call [22, 16] - [22, 20]
-        (identifier [22, 16] - [22, 17])
-        (comma_separated_expressions [22, 18] - [22, 19]
-          (identifier [22, 18] - [22, 19])))))
+      expression: (expression [22, 16] - [22, 20]
+        (call [22, 16] - [22, 20]
+          (expression [22, 16] - [22, 17]
+            (identifier [22, 16] - [22, 17]))
+          (comma_separated_expressions [22, 18] - [22, 19]
+            (expression [22, 18] - [22, 19]
+              (identifier [22, 18] - [22, 19])))))))
   (text_token [22, 21] - [22, 25])
   (parse_token [22, 25] - [22, 31]
     (inline_parse_token [22, 25] - [22, 31]
-      (call [22, 26] - [22, 30]
-        (identifier [22, 26] - [22, 27])
-        (comma_separated_expressions [22, 28] - [22, 29]
-          (identifier [22, 28] - [22, 29])))))
+      expression: (expression [22, 26] - [22, 30]
+        (call [22, 26] - [22, 30]
+          (expression [22, 26] - [22, 27]
+            (identifier [22, 26] - [22, 27]))
+          (comma_separated_expressions [22, 28] - [22, 29]
+            (expression [22, 28] - [22, 29]
+              (identifier [22, 28] - [22, 29])))))))
   (text_token [22, 31] - [23, 8])
   (parse_token [23, 8] - [23, 12]
     (inline_parse_token [23, 8] - [23, 12]
-      (container [23, 9] - [23, 11]
-        (tuple [23, 9] - [23, 11]))))
+      expression: (expression [23, 9] - [23, 11]
+        (container [23, 9] - [23, 11]
+          (tuple [23, 9] - [23, 11])))))
   (text_token [23, 12] - [23, 14])
   (parse_token [23, 14] - [23, 20]
     (inline_parse_token [23, 14] - [23, 20]
-      (container [23, 15] - [23, 19]
-        (tuple [23, 15] - [23, 19]
-          (identifier [23, 16] - [23, 17])))))
+      expression: (expression [23, 15] - [23, 19]
+        (container [23, 15] - [23, 19]
+          (tuple [23, 15] - [23, 19]
+            (expression [23, 16] - [23, 17]
+              (identifier [23, 16] - [23, 17])))))))
   (text_token [23, 20] - [23, 22])
   (parse_token [23, 22] - [23, 30]
     (inline_parse_token [23, 22] - [23, 30]
-      (container [23, 23] - [23, 29]
-        (tuple [23, 23] - [23, 29]
-          (identifier [23, 24] - [23, 25])
-          (identifier [23, 26] - [23, 27])))))
+      expression: (expression [23, 23] - [23, 29]
+        (container [23, 23] - [23, 29]
+          (tuple [23, 23] - [23, 29]
+            (expression [23, 24] - [23, 25]
+              (identifier [23, 24] - [23, 25]))
+            (expression [23, 26] - [23, 27]
+              (identifier [23, 26] - [23, 27])))))))
   (text_token [23, 30] - [23, 32])
   (parse_token [23, 32] - [23, 41]
     (inline_parse_token [23, 32] - [23, 41]
-      (container [23, 33] - [23, 40]
-        (tuple [23, 33] - [23, 40]
-          (identifier [23, 34] - [23, 35])
-          (identifier [23, 36] - [23, 37])
-          (identifier [23, 38] - [23, 39])))))
+      expression: (expression [23, 33] - [23, 40]
+        (container [23, 33] - [23, 40]
+          (tuple [23, 33] - [23, 40]
+            (expression [23, 34] - [23, 35]
+              (identifier [23, 34] - [23, 35]))
+            (expression [23, 36] - [23, 37]
+              (identifier [23, 36] - [23, 37]))
+            (expression [23, 38] - [23, 39]
+              (identifier [23, 38] - [23, 39])))))))
   (text_token [23, 41] - [24, 7])
   (parse_token [24, 7] - [24, 11]
     (inline_parse_token [24, 7] - [24, 11]
-      (container [24, 8] - [24, 10]
-        (list [24, 8] - [24, 10]))))
+      expression: (expression [24, 8] - [24, 10]
+        (container [24, 8] - [24, 10]
+          (list [24, 8] - [24, 10])))))
   (text_token [24, 11] - [24, 13])
   (parse_token [24, 13] - [24, 18]
     (inline_parse_token [24, 13] - [24, 18]
-      (container [24, 14] - [24, 17]
-        (list [24, 14] - [24, 17]
-          (identifier [24, 15] - [24, 16])))))
+      expression: (expression [24, 14] - [24, 17]
+        (container [24, 14] - [24, 17]
+          (list [24, 14] - [24, 17]
+            (expression [24, 15] - [24, 16]
+              (identifier [24, 15] - [24, 16])))))))
   (text_token [24, 18] - [24, 20])
   (parse_token [24, 20] - [24, 26]
     (inline_parse_token [24, 20] - [24, 26]
-      (container [24, 21] - [24, 25]
-        (list [24, 21] - [24, 25]
-          (identifier [24, 22] - [24, 23])))))
+      expression: (expression [24, 21] - [24, 25]
+        (container [24, 21] - [24, 25]
+          (list [24, 21] - [24, 25]
+            (expression [24, 22] - [24, 23]
+              (identifier [24, 22] - [24, 23])))))))
   (text_token [24, 26] - [24, 28])
   (parse_token [24, 28] - [24, 36]
     (inline_parse_token [24, 28] - [24, 36]
-      (container [24, 29] - [24, 35]
-        (list [24, 29] - [24, 35]
-          (identifier [24, 30] - [24, 31])
-          (identifier [24, 32] - [24, 33])))))
+      expression: (expression [24, 29] - [24, 35]
+        (container [24, 29] - [24, 35]
+          (list [24, 29] - [24, 35]
+            (expression [24, 30] - [24, 31]
+              (identifier [24, 30] - [24, 31]))
+            (expression [24, 32] - [24, 33]
+              (identifier [24, 32] - [24, 33])))))))
   (text_token [24, 36] - [24, 38])
   (parse_token [24, 38] - [24, 47]
     (inline_parse_token [24, 38] - [24, 47]
-      (container [24, 39] - [24, 46]
-        (list [24, 39] - [24, 46]
-          (identifier [24, 40] - [24, 41])
-          (identifier [24, 42] - [24, 43])
-          (identifier [24, 44] - [24, 45])))))
+      expression: (expression [24, 39] - [24, 46]
+        (container [24, 39] - [24, 46]
+          (list [24, 39] - [24, 46]
+            (expression [24, 40] - [24, 41]
+              (identifier [24, 40] - [24, 41]))
+            (expression [24, 42] - [24, 43]
+              (identifier [24, 42] - [24, 43]))
+            (expression [24, 44] - [24, 45]
+              (identifier [24, 44] - [24, 45])))))))
   (text_token [24, 47] - [25, 6])
   (parse_token [25, 6] - [25, 10]
     (inline_parse_token [25, 6] - [25, 10]
-      (container [25, 7] - [25, 9]
-        (set [25, 7] - [25, 9]))))
+      expression: (expression [25, 7] - [25, 9]
+        (container [25, 7] - [25, 9]
+          (set [25, 7] - [25, 9])))))
   (text_token [25, 10] - [25, 12])
   (parse_token [25, 12] - [25, 17]
     (inline_parse_token [25, 12] - [25, 17]
-      (container [25, 13] - [25, 16]
-        (set [25, 13] - [25, 16]
-          (identifier [25, 14] - [25, 15])))))
+      expression: (expression [25, 13] - [25, 16]
+        (container [25, 13] - [25, 16]
+          (set [25, 13] - [25, 16]
+            (expression [25, 14] - [25, 15]
+              (identifier [25, 14] - [25, 15])))))))
   (text_token [25, 17] - [25, 19])
   (parse_token [25, 19] - [25, 25]
     (inline_parse_token [25, 19] - [25, 25]
-      (container [25, 20] - [25, 24]
-        (set [25, 20] - [25, 24]
-          (identifier [25, 21] - [25, 22])))))
+      expression: (expression [25, 20] - [25, 24]
+        (container [25, 20] - [25, 24]
+          (set [25, 20] - [25, 24]
+            (expression [25, 21] - [25, 22]
+              (identifier [25, 21] - [25, 22])))))))
   (text_token [25, 25] - [25, 27])
   (parse_token [25, 27] - [25, 35]
     (inline_parse_token [25, 27] - [25, 35]
-      (container [25, 28] - [25, 34]
-        (set [25, 28] - [25, 34]
-          (identifier [25, 29] - [25, 30])
-          (identifier [25, 31] - [25, 32])))))
+      expression: (expression [25, 28] - [25, 34]
+        (container [25, 28] - [25, 34]
+          (set [25, 28] - [25, 34]
+            (expression [25, 29] - [25, 30]
+              (identifier [25, 29] - [25, 30]))
+            (expression [25, 31] - [25, 32]
+              (identifier [25, 31] - [25, 32])))))))
   (text_token [25, 35] - [25, 37])
   (parse_token [25, 37] - [25, 46]
     (inline_parse_token [25, 37] - [25, 46]
-      (container [25, 38] - [25, 45]
-        (set [25, 38] - [25, 45]
-          (identifier [25, 39] - [25, 40])
-          (identifier [25, 41] - [25, 42])
-          (identifier [25, 43] - [25, 44])))))
+      expression: (expression [25, 38] - [25, 45]
+        (container [25, 38] - [25, 45]
+          (set [25, 38] - [25, 45]
+            (expression [25, 39] - [25, 40]
+              (identifier [25, 39] - [25, 40]))
+            (expression [25, 41] - [25, 42]
+              (identifier [25, 41] - [25, 42]))
+            (expression [25, 43] - [25, 44]
+              (identifier [25, 43] - [25, 44])))))))
   (text_token [25, 46] - [27, 29])
   (parse_token [27, 29] - [52, 1]
     (block_parse_token [27, 29] - [52, 1]
-      (container [28, 2] - [51, 3]
-        (list [28, 2] - [51, 3]
-          (operation [29, 2] - [29, 4]
-            (unary_operation [29, 2] - [29, 4]
-              (unary_operator [29, 2] - [29, 3])
-              (identifier [29, 3] - [29, 4])))
-          (operation [30, 2] - [30, 4]
-            (unary_operation [30, 2] - [30, 4]
-              (unary_operator [30, 2] - [30, 3])
-              (identifier [30, 3] - [30, 4])))
-          (operation [31, 2] - [31, 5]
-            (binary_operation [31, 2] - [31, 5]
-              (identifier [31, 2] - [31, 3])
-              (binary_operator [31, 3] - [31, 4])
-              (identifier [31, 4] - [31, 5])))
-          (operation [32, 2] - [32, 5]
-            (binary_operation [32, 2] - [32, 5]
-              (identifier [32, 2] - [32, 3])
-              (binary_operator [32, 3] - [32, 4])
-              (identifier [32, 4] - [32, 5])))
-          (operation [33, 2] - [33, 5]
-            (binary_operation [33, 2] - [33, 5]
-              (identifier [33, 2] - [33, 3])
-              (binary_operator [33, 3] - [33, 4])
-              (identifier [33, 4] - [33, 5])))
-          (operation [34, 2] - [34, 5]
-            (binary_operation [34, 2] - [34, 5]
-              (identifier [34, 2] - [34, 3])
-              (binary_operator [34, 3] - [34, 4])
-              (identifier [34, 4] - [34, 5])))
-          (operation [35, 2] - [35, 5]
-            (binary_operation [35, 2] - [35, 5]
-              (identifier [35, 2] - [35, 3])
-              (binary_operator [35, 3] - [35, 4])
-              (identifier [35, 4] - [35, 5])))
-          (operation [36, 2] - [36, 5]
-            (binary_operation [36, 2] - [36, 5]
-              (identifier [36, 2] - [36, 3])
-              (binary_operator [36, 3] - [36, 4])
-              (identifier [36, 4] - [36, 5])))
-          (operation [37, 2] - [37, 5]
-            (binary_operation [37, 2] - [37, 5]
-              (identifier [37, 2] - [37, 3])
-              (binary_operator [37, 3] - [37, 4])
-              (identifier [37, 4] - [37, 5])))
-          (operation [38, 2] - [38, 5]
-            (binary_operation [38, 2] - [38, 5]
-              (identifier [38, 2] - [38, 3])
-              (binary_operator [38, 3] - [38, 4])
-              (identifier [38, 4] - [38, 5])))
-          (operation [39, 2] - [39, 5]
-            (binary_operation [39, 2] - [39, 5]
-              (identifier [39, 2] - [39, 3])
-              (binary_operator [39, 3] - [39, 4])
-              (identifier [39, 4] - [39, 5])))
-          (operation [40, 2] - [40, 5]
-            (binary_operation [40, 2] - [40, 5]
-              (identifier [40, 2] - [40, 3])
-              (binary_operator [40, 3] - [40, 4])
-              (identifier [40, 4] - [40, 5])))
-          (operation [41, 2] - [41, 5]
-            (binary_operation [41, 2] - [41, 5]
-              (identifier [41, 2] - [41, 3])
-              (binary_operator [41, 3] - [41, 4])
-              (identifier [41, 4] - [41, 5])))
-          (operation [42, 2] - [42, 5]
-            (binary_operation [42, 2] - [42, 5]
-              (identifier [42, 2] - [42, 3])
-              (binary_operator [42, 3] - [42, 4])
-              (identifier [42, 4] - [42, 5])))
-          (operation [43, 2] - [43, 6]
-            (binary_operation [43, 2] - [43, 6]
-              (identifier [43, 2] - [43, 3])
-              (binary_operator [43, 3] - [43, 5])
-              (identifier [43, 5] - [43, 6])))
-          (operation [44, 2] - [44, 6]
-            (binary_operation [44, 2] - [44, 6]
-              (identifier [44, 2] - [44, 3])
-              (binary_operator [44, 3] - [44, 5])
-              (identifier [44, 5] - [44, 6])))
-          (operation [45, 2] - [45, 6]
-            (binary_operation [45, 2] - [45, 6]
-              (identifier [45, 2] - [45, 3])
-              (binary_operator [45, 3] - [45, 5])
-              (identifier [45, 5] - [45, 6])))
-          (operation [46, 2] - [46, 6]
-            (binary_operation [46, 2] - [46, 6]
-              (identifier [46, 2] - [46, 3])
-              (binary_operator [46, 3] - [46, 5])
-              (identifier [46, 5] - [46, 6])))
-          (operation [47, 2] - [47, 6]
-            (binary_operation [47, 2] - [47, 6]
-              (identifier [47, 2] - [47, 3])
-              (binary_operator [47, 3] - [47, 5])
-              (identifier [47, 5] - [47, 6])))
-          (operation [48, 2] - [48, 6]
-            (binary_operation [48, 2] - [48, 6]
-              (identifier [48, 2] - [48, 3])
-              (binary_operator [48, 3] - [48, 5])
-              (identifier [48, 5] - [48, 6])))
-          (operation [49, 2] - [49, 6]
-            (binary_operation [49, 2] - [49, 6]
-              (identifier [49, 2] - [49, 3])
-              (binary_operator [49, 3] - [49, 5])
-              (identifier [49, 5] - [49, 6])))
-          (operation [50, 2] - [50, 6]
-            (binary_operation [50, 2] - [50, 6]
-              (identifier [50, 2] - [50, 3])
-              (binary_operator [50, 3] - [50, 5])
-              (identifier [50, 5] - [50, 6])))))))
+      expression: (expression [28, 2] - [51, 3]
+        (container [28, 2] - [51, 3]
+          (list [28, 2] - [51, 3]
+            (expression [29, 2] - [29, 4]
+              (operation [29, 2] - [29, 4]
+                (unary_operation [29, 2] - [29, 4]
+                  (unary_operator [29, 2] - [29, 3])
+                  (expression [29, 3] - [29, 4]
+                    (identifier [29, 3] - [29, 4])))))
+            (expression [30, 2] - [30, 4]
+              (operation [30, 2] - [30, 4]
+                (unary_operation [30, 2] - [30, 4]
+                  (unary_operator [30, 2] - [30, 3])
+                  (expression [30, 3] - [30, 4]
+                    (identifier [30, 3] - [30, 4])))))
+            (expression [31, 2] - [31, 5]
+              (operation [31, 2] - [31, 5]
+                (binary_operation [31, 2] - [31, 5]
+                  (expression [31, 2] - [31, 3]
+                    (identifier [31, 2] - [31, 3]))
+                  (expression [31, 4] - [31, 5]
+                    (identifier [31, 4] - [31, 5])))))
+            (expression [32, 2] - [32, 5]
+              (operation [32, 2] - [32, 5]
+                (binary_operation [32, 2] - [32, 5]
+                  (expression [32, 2] - [32, 3]
+                    (identifier [32, 2] - [32, 3]))
+                  (expression [32, 4] - [32, 5]
+                    (identifier [32, 4] - [32, 5])))))
+            (expression [33, 2] - [33, 5]
+              (operation [33, 2] - [33, 5]
+                (binary_operation [33, 2] - [33, 5]
+                  (expression [33, 2] - [33, 3]
+                    (identifier [33, 2] - [33, 3]))
+                  (expression [33, 4] - [33, 5]
+                    (identifier [33, 4] - [33, 5])))))
+            (expression [34, 2] - [34, 5]
+              (operation [34, 2] - [34, 5]
+                (binary_operation [34, 2] - [34, 5]
+                  (expression [34, 2] - [34, 3]
+                    (identifier [34, 2] - [34, 3]))
+                  (expression [34, 4] - [34, 5]
+                    (identifier [34, 4] - [34, 5])))))
+            (expression [35, 2] - [35, 5]
+              (operation [35, 2] - [35, 5]
+                (binary_operation [35, 2] - [35, 5]
+                  (expression [35, 2] - [35, 3]
+                    (identifier [35, 2] - [35, 3]))
+                  (expression [35, 4] - [35, 5]
+                    (identifier [35, 4] - [35, 5])))))
+            (expression [36, 2] - [36, 5]
+              (operation [36, 2] - [36, 5]
+                (binary_operation [36, 2] - [36, 5]
+                  (expression [36, 2] - [36, 3]
+                    (identifier [36, 2] - [36, 3]))
+                  (expression [36, 4] - [36, 5]
+                    (identifier [36, 4] - [36, 5])))))
+            (expression [37, 2] - [37, 5]
+              (operation [37, 2] - [37, 5]
+                (binary_operation [37, 2] - [37, 5]
+                  (expression [37, 2] - [37, 3]
+                    (identifier [37, 2] - [37, 3]))
+                  (binary_operator [37, 3] - [37, 4])
+                  (expression [37, 4] - [37, 5]
+                    (identifier [37, 4] - [37, 5])))))
+            (expression [38, 2] - [38, 5]
+              (operation [38, 2] - [38, 5]
+                (binary_operation [38, 2] - [38, 5]
+                  (expression [38, 2] - [38, 3]
+                    (identifier [38, 2] - [38, 3]))
+                  (expression [38, 4] - [38, 5]
+                    (identifier [38, 4] - [38, 5])))))
+            (expression [39, 2] - [39, 5]
+              (operation [39, 2] - [39, 5]
+                (binary_operation [39, 2] - [39, 5]
+                  (expression [39, 2] - [39, 3]
+                    (identifier [39, 2] - [39, 3]))
+                  (expression [39, 4] - [39, 5]
+                    (identifier [39, 4] - [39, 5])))))
+            (expression [40, 2] - [40, 5]
+              (operation [40, 2] - [40, 5]
+                (binary_operation [40, 2] - [40, 5]
+                  (expression [40, 2] - [40, 3]
+                    (identifier [40, 2] - [40, 3]))
+                  (expression [40, 4] - [40, 5]
+                    (identifier [40, 4] - [40, 5])))))
+            (expression [41, 2] - [41, 5]
+              (operation [41, 2] - [41, 5]
+                (binary_operation [41, 2] - [41, 5]
+                  (expression [41, 2] - [41, 3]
+                    (identifier [41, 2] - [41, 3]))
+                  (expression [41, 4] - [41, 5]
+                    (identifier [41, 4] - [41, 5])))))
+            (expression [42, 2] - [42, 5]
+              (operation [42, 2] - [42, 5]
+                (binary_operation [42, 2] - [42, 5]
+                  (expression [42, 2] - [42, 3]
+                    (identifier [42, 2] - [42, 3]))
+                  (expression [42, 4] - [42, 5]
+                    (identifier [42, 4] - [42, 5])))))
+            (expression [43, 2] - [43, 6]
+              (operation [43, 2] - [43, 6]
+                (binary_operation [43, 2] - [43, 6]
+                  (expression [43, 2] - [43, 3]
+                    (identifier [43, 2] - [43, 3]))
+                  (expression [43, 5] - [43, 6]
+                    (identifier [43, 5] - [43, 6])))))
+            (expression [44, 2] - [44, 6]
+              (operation [44, 2] - [44, 6]
+                (binary_operation [44, 2] - [44, 6]
+                  (expression [44, 2] - [44, 3]
+                    (identifier [44, 2] - [44, 3]))
+                  (expression [44, 5] - [44, 6]
+                    (identifier [44, 5] - [44, 6])))))
+            (expression [45, 2] - [45, 6]
+              (operation [45, 2] - [45, 6]
+                (binary_operation [45, 2] - [45, 6]
+                  (expression [45, 2] - [45, 3]
+                    (identifier [45, 2] - [45, 3]))
+                  (expression [45, 5] - [45, 6]
+                    (identifier [45, 5] - [45, 6])))))
+            (expression [46, 2] - [46, 6]
+              (operation [46, 2] - [46, 6]
+                (binary_operation [46, 2] - [46, 6]
+                  (expression [46, 2] - [46, 3]
+                    (identifier [46, 2] - [46, 3]))
+                  (expression [46, 5] - [46, 6]
+                    (identifier [46, 5] - [46, 6])))))
+            (expression [47, 2] - [47, 6]
+              (operation [47, 2] - [47, 6]
+                (binary_operation [47, 2] - [47, 6]
+                  (expression [47, 2] - [47, 3]
+                    (identifier [47, 2] - [47, 3]))
+                  (expression [47, 5] - [47, 6]
+                    (identifier [47, 5] - [47, 6])))))
+            (expression [48, 2] - [48, 6]
+              (operation [48, 2] - [48, 6]
+                (binary_operation [48, 2] - [48, 6]
+                  (expression [48, 2] - [48, 3]
+                    (identifier [48, 2] - [48, 3]))
+                  (binary_operator [48, 3] - [48, 5])
+                  (expression [48, 5] - [48, 6]
+                    (identifier [48, 5] - [48, 6])))))
+            (expression [49, 2] - [49, 6]
+              (operation [49, 2] - [49, 6]
+                (binary_operation [49, 2] - [49, 6]
+                  (expression [49, 2] - [49, 3]
+                    (identifier [49, 2] - [49, 3]))
+                  (binary_operator [49, 3] - [49, 5])
+                  (expression [49, 5] - [49, 6]
+                    (identifier [49, 5] - [49, 6])))))
+            (expression [50, 2] - [50, 6]
+              (operation [50, 2] - [50, 6]
+                (binary_operation [50, 2] - [50, 6]
+                  (expression [50, 2] - [50, 3]
+                    (identifier [50, 2] - [50, 3]))
+                  (binary_operator [50, 3] - [50, 5])
+                  (expression [50, 5] - [50, 6]
+                    (identifier [50, 5] - [50, 6]))))))))))
   (text_token [52, 1] - [53, 0])
   (code_token [53, 0] - [73, 3]
     (fence [53, 0] - [53, 3])
-    (fence [73, 0] - [73, 3])))
+    (fence [73, 0] - [73, 3]))
+  (text_token [73, 3] - [74, 0]))

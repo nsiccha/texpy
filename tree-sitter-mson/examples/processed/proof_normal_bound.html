@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>proof_normal_bound</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h3 id="proposition">Proposition:</h3>
+<p>Let <img src="figs/dd9bff80527f3e34ecc151792b1d6415.png" alt="dd9bff80527f3e34ecc151792b1d6415" /> be a real number and <img src="figs/a215dc9310c26830a30532ea31d7e559.png" alt="a215dc9310c26830a30532ea31d7e559" /> be an RV with PDF <img src="figs/a40a7b184f0083ff65a7ad491150f101.png" alt="a40a7b184f0083ff65a7ad491150f101" />, <img src="figs/9f618e583fb531bae8a7a1cb559784ed.png" alt="9f618e583fb531bae8a7a1cb559784ed" /> and <img src="figs/b77e32a695108a5671066cd9ef0e0a88.png" alt="b77e32a695108a5671066cd9ef0e0a88" /> for all real numbers dx. Then</p>
+<p><img src="figs/2d4fac518a0a180f918ecc99d0cbf468.png" alt="2d4fac518a0a180f918ecc99d0cbf468" /></p>
+<h3 id="proof">Proof:</h3>
+<p>For sake of brevity we introduce</p>
+<p><img src="figs/a8cdd580c2a43bd288a7841a449c194e.png" alt="a8cdd580c2a43bd288a7841a449c194e" /></p>
+<p>The expectation of w(X) = logistic(X) is defined as</p>
+<p><img src="figs/2889d95a57c5160e8bc396692d45a0e2.png" alt="2889d95a57c5160e8bc396692d45a0e2" /></p>
+<p>A linear change of variables yields</p>
+<p><img src="figs/6c5ad8c73ff688f5110cdd4b5ae4c87b.png" alt="6c5ad8c73ff688f5110cdd4b5ae4c87b" /></p>
+<p>and “folding the integral at z=0” yields</p>
+<p><img src="figs/7299116989be9bcb15979927a4e6a05f.png" alt="7299116989be9bcb15979927a4e6a05f" /></p>
+<p>where we used the symmetry of <img src="figs/943d9ab3e8d9372aed880226d92fba44.png" alt="943d9ab3e8d9372aed880226d92fba44" /> around <img src="figs/125277c5574d0a970f2b3b24ef292c7a.png" alt="125277c5574d0a970f2b3b24ef292c7a" />.</p>
+<p>To show that <img src="figs/ac68ae408edd500d9009c66c9d2a1dbb.png" alt="ac68ae408edd500d9009c66c9d2a1dbb" /> it is sufficient to show that</p>
+<p><img src="figs/1e92a4d5f942bfedae04c834e2581385.png" alt="1e92a4d5f942bfedae04c834e2581385" /></p>
+<p>almost everywhere for fixed <img src="figs/8ca5e9ba3ea10dbd7b7f3da2516a1439.png" alt="8ca5e9ba3ea10dbd7b7f3da2516a1439" /> because then</p>
+<p><img src="figs/e3f3c707a446e96d26dd6a92148c04cf.png" alt="e3f3c707a446e96d26dd6a92148c04cf" /></p>
+<p>We now show that</p>
+<p><img src="figs/9d03cc74256b6cab3651b2ab0523e415.png" alt="9d03cc74256b6cab3651b2ab0523e415" /></p>
+<p>for negative mu and nonzero real z. Using the definition of w and combining all fractions to one we get</p>
+<p><img src="figs/36e5128b629070732ce26a91c91b7479.png" alt="36e5128b629070732ce26a91c91b7479" /></p>
+<p>with</p>
+<p><img src="figs/700c1aa8a977ebcef4e631694e0fde3c.png" alt="700c1aa8a977ebcef4e631694e0fde3c" /></p>
+<p>and</p>
+<p><img src="figs/3f9e9a52141314260bfe3331bb05f814.png" alt="3f9e9a52141314260bfe3331bb05f814" /></p>
+<p>using the abbreviation <img src="figs/9069bc256f696fee1b5af46a82e58411.png" alt="9069bc256f696fee1b5af46a82e58411" />. To show that</p>
+<p><img src="figs/018aa8ccfe1f92463f89e4c14fe57ec0.png" alt="018aa8ccfe1f92463f89e4c14fe57ec0" /></p>
+<p>for nonzero z it is sufficient to show that <img src="figs/9d56c46999633b7925b9ac84884bed7c.png" alt="9d56c46999633b7925b9ac84884bed7c" />. Expanding all products in the definition of <img src="figs/ff63f435e79343867422e319f7f9ad21.png" alt="ff63f435e79343867422e319f7f9ad21" /> yields</p>
+<p><img src="figs/e3707c0287444f973a46a6ecf5bf35d8.png" alt="e3707c0287444f973a46a6ecf5bf35d8" /></p>
+<p>As <img src="figs/c804c35d5dfab3e90afe1ae59960f28c.png" alt="c804c35d5dfab3e90afe1ae59960f28c" /> for all real numbers mu we get</p>
+<p><img src="figs/878059728f3e2d10a3bbd918b452552b.png" alt="878059728f3e2d10a3bbd918b452552b" /></p>
+<p>iff</p>
+<p><img src="figs/aa38fc04dc337e8edfbb4f2cb54d007b.png" alt="aa38fc04dc337e8edfbb4f2cb54d007b" /></p>
+<p>We get</p>
+<p><img src="figs/3ef61ad71ff05ebfb446dacf3bc44f76.png" alt="3ef61ad71ff05ebfb446dacf3bc44f76" /></p>
+<p>Direct computation reveals that <img src="figs/67a113f4e9b26d2b440c62ec2ff7f2be.png" alt="67a113f4e9b26d2b440c62ec2ff7f2be" />. Furthermore we can compute</p>
+<p><img src="figs/1c47434934bddab4a40ea6ae69bfc2d8.png" alt="1c47434934bddab4a40ea6ae69bfc2d8" /></p>
+<p>Elementary analysis reveals</p>
+<p><img src="figs/bf2329f4609c8b4dd9906c110733b646.png" alt="bf2329f4609c8b4dd9906c110733b646" /></p>
+<p>with the inequality being strict if <img src="figs/66cf8b16365670c815dcdeef6bd0ed58.png" alt="66cf8b16365670c815dcdeef6bd0ed58" />. From the fundamental theorem of calculus we have that</p>
+<p><img src="figs/47e83dcf70bb6a891207bdc9d46eab62.png" alt="47e83dcf70bb6a891207bdc9d46eab62" /></p>
+<p>for any real number mu. Using <img src="figs/ca1459fedd446d723973ac7b36c73a63.png" alt="ca1459fedd446d723973ac7b36c73a63" /> almost everywhere, <img src="figs/334a17d59883c49183e3a9e22ba6b5f9.png" alt="334a17d59883c49183e3a9e22ba6b5f9" /> and <img src="figs/dd0bb307854bfc7e7f9b8b52aa6d0247.png" alt="dd0bb307854bfc7e7f9b8b52aa6d0247" /> we can bound</p>
+<p><img src="figs/d143207f3f413750eb0ff177bd05d716.png" alt="d143207f3f413750eb0ff177bd05d716" /></p>
+<p>for some <img src="figs/684bd1d1604f62019460f6f7733a991c.png" alt="684bd1d1604f62019460f6f7733a991c" />.</p>
+</body>
+</html>

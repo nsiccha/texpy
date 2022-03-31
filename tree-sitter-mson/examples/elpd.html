@@ -1,0 +1,372 @@
+
+<!doctype HTML>
+<head>
+  <title>Tree-sitter Highlighting</title>
+  <style>
+    body {
+      font-family: monospace
+    }
+    .line-number {
+      user-select: none;
+      text-align: right;
+      color: rgba(27,31,35,.3);
+      padding: 0 10px;
+    }
+    .line {
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
+<table>
+<tr><td class=line-number>1</td><td class=line>### Definitions:
+</td></tr>
+<tr><td class=line-number>2</td><td class=line>
+</td></tr>
+<tr><td class=line-number>3</td><td class=line>#### ELPD
+</td></tr>
+<tr><td class=line-number>4</td><td class=line>
+</td></tr>
+<tr><td class=line-number>5</td><td class=line><span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>6</td><td class=line><span style='color: green'>  elpd_diff_loo(A, B | y) = Sum(elpd_diffs_loo[i](A, B | y), i)</span>
+</td></tr>
+<tr><td class=line-number>7</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>8</td><td class=line>
+</td></tr>
+<tr><td class=line-number>9</td><td class=line><span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>10</td><td class=line><span style='color: green'>  elpd_diffs_loo[i](A, B | y) = Log @ p(y[i] | A, y[-i]) - Log @ p(y[i] | B, y[-i])</span>
+</td></tr>
+<tr><td class=line-number>11</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>12</td><td class=line>
+</td></tr>
+<tr><td class=line-number>13</td><td class=line><span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>14</td><td class=line><span style='color: green'>  elpd_se_loo(A, B | y) = dots</span>
+</td></tr>
+<tr><td class=line-number>15</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>16</td><td class=line>
+</td></tr>
+<tr><td class=line-number>17</td><td class=line>#### weights for many models
+</td></tr>
+<tr><td class=line-number>18</td><td class=line>
+</td></tr>
+<tr><td class=line-number>19</td><td class=line><span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>20</td><td class=line><span style='color: green'>  w[k,method] = E(softmax(elpd[method]))</span>
+</td></tr>
+<tr><td class=line-number>21</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>22</td><td class=line>
+</td></tr>
+<tr><td class=line-number>23</td><td class=line><span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>24</td><td class=line><span style='color: green'>  softmax(x) = Exp(x) / Sum(Exp(x[i]), i)</span>
+</td></tr>
+<tr><td class=line-number>25</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>26</td><td class=line>
+</td></tr>
+<tr><td class=line-number>27</td><td class=line>#### weights for two model case
+</td></tr>
+<tr><td class=line-number>28</td><td class=line><span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>29</td><td class=line><span style='color: green'>  w[A,method] = E(logistic(elpd_diff[method]))</span>
+</td></tr>
+<tr><td class=line-number>30</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>31</td><td class=line><span style='color: green'>{def_logistic:</span>
+</td></tr>
+<tr><td class=line-number>32</td><td class=line><span style='color: green'>  logistic(x) = 1 / (1 + Exp(-x))</span>
+</td></tr>
+<tr><td class=line-number>33</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>34</td><td class=line>
+</td></tr>
+<tr><td class=line-number>35</td><td class=line>#### methods
+</td></tr>
+<tr><td class=line-number>36</td><td class=line>
+</td></tr>
+<tr><td class=line-number>37</td><td class=line>* The &quot;point-estimate&quot;-method uses <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>38</td><td class=line><span style='color: green'>  P(elpd_diff[point] = elpd_diff_loo) = 1</span>
+</td></tr>
+<tr><td class=line-number>39</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>40</td><td class=line>* The &quot;normal-approximation&quot;-method  uses <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>41</td><td class=line><span style='color: green'>  Dist(elpd_diff[SE]) = Normal(elpd_diff_loo, elpd_se_loo)</span>
+</td></tr>
+<tr><td class=line-number>42</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>43</td><td class=line>* The &quot;Bayesian-bootstrap&quot;-method uses <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>44</td><td class=line><span style='color: green'>  elpd_diff[BB] = n * &lt;W[BB], elpd_diffs_loo&gt;</span>
+</td></tr>
+<tr><td class=line-number>45</td><td class=line><span style='color: green'>}</span> with <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>46</td><td class=line><span style='color: green'>  Dist(W[BB]) = Dir(ones[n]).</span>
+</td></tr>
+<tr><td class=line-number>47</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>48</td><td class=line>
+</td></tr>
+<tr><td class=line-number>49</td><td class=line>#### results
+</td></tr>
+<tr><td class=line-number>50</td><td class=line>
+</td></tr>
+<tr><td class=line-number>51</td><td class=line>* We chose the definitions such that <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>52</td><td class=line><span style='color: green'>  w[A,point] = logistic(elpd_diff_loo).</span>
+</td></tr>
+<tr><td class=line-number>53</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>54</td><td class=line>* We can bound <span style='color: cyan'>{w[A,SE]}</span> using <span style='color: cyan'>{w[A,point]}</span> if <span style='color: cyan'>{w[A,point] &lt; 1/2}</span>: <span style='color: green'>{bound_SE:</span>
+</td></tr>
+<tr><td class=line-number>55</td><td class=line><span style='color: green'>  w[A,point] &lt; w[A,SE] &lt; 1/2</span>
+</td></tr>
+<tr><td class=line-number>56</td><td class=line><span style='color: green'>}</span> or equivalently if <span style='color: cyan'>{w[A,SE] &gt; 1/2}</span>.
+</td></tr>
+<tr><td class=line-number>57</td><td class=line>* Generally we *cannot* bound <span style='color: cyan'>{w[A,BB]}</span> using <span style='color: cyan'>{w[A,point]}</span> or <span style='color: cyan'>{w[A,SE]}</span>, even though
+</td></tr>
+<tr><td class=line-number>58</td><td class=line>in practice we can Expect <span style='color: cyan'>{w[a,BB]}</span> to be closer to <span style='color: cyan'>{1/2}</span> than <span style='color: cyan'>{w[A,point]}</span>.
+</td></tr>
+<tr><td class=line-number>59</td><td class=line>
+</td></tr>
+<tr><td class=line-number>60</td><td class=line>#### proofs
+</td></tr>
+<tr><td class=line-number>61</td><td class=line>
+</td></tr>
+<tr><td class=line-number>62</td><td class=line>* Direct computation.
+</td></tr>
+<tr><td class=line-number>63</td><td class=line>* See [below](#proof-for-the-normal-approximation).
+</td></tr>
+<tr><td class=line-number>64</td><td class=line>* Counterexamples can be constructed (for now see Slack).
+</td></tr>
+<tr><td class=line-number>65</td><td class=line>
+</td></tr>
+<tr><td class=line-number>66</td><td class=line>#### proof for the normal approximation
+</td></tr>
+<tr><td class=line-number>67</td><td class=line>
+</td></tr>
+<tr><td class=line-number>68</td><td class=line>The proof of <span style='color: cyan'>{bound_SE}</span> consists of two parts:
+</td></tr>
+<tr><td class=line-number>69</td><td class=line>
+</td></tr>
+<tr><td class=line-number>70</td><td class=line>* [First we show](#proof-of-bound-fexefx) that given
+</td></tr>
+<tr><td class=line-number>71</td><td class=line>  * a real number <span style='color: cyan'>{mu}</span>,
+</td></tr>
+<tr><td class=line-number>72</td><td class=line>  * a function <span style='color: cyan'>{f :: reals -&gt; reals}</span> that satisfies <span style='color: green'>{bound_f:</span>
+</td></tr>
+<tr><td class=line-number>73</td><td class=line><span style='color: green'>    2 * f(mu) &lt; f(mu - x) + f(mu + x)</span>
+</td></tr>
+<tr><td class=line-number>74</td><td class=line><span style='color: green'>  }</span> for all positive numbers <span style='color: cyan'>{x &gt; 0}</span> and
+</td></tr>
+<tr><td class=line-number>75</td><td class=line>  * an RV <span style='color: cyan'>{X}</span> with mean <span style='color: cyan'>{mu}</span> and PDF <span style='color: cyan'>{p :: reals -&gt; nonnegative_reals}</span> that satisfies <span style='color: green'>{symm_p:</span>
+</td></tr>
+<tr><td class=line-number>76</td><td class=line><span style='color: green'>    p(mu - x) = p(mu + x)</span>
+</td></tr>
+<tr><td class=line-number>77</td><td class=line><span style='color: green'>  }</span> for all positive numbers <span style='color: cyan'>{x &gt; 0}</span>,
+</td></tr>
+<tr><td class=line-number>78</td><td class=line>  * the inequality <span style='color: green'>{bound_fexefx:</span>
+</td></tr>
+<tr><td class=line-number>79</td><td class=line><span style='color: green'>    f(E(X)) &lt; E(f(X))</span>
+</td></tr>
+<tr><td class=line-number>80</td><td class=line><span style='color: green'>  }</span> holds (assuming <span style='color: cyan'>{E(f(X))}</span> &quot;exists&quot; which it does in our case).
+</td></tr>
+<tr><td class=line-number>81</td><td class=line>* [Next we show](#proof-of-bound-f) that the logistic function satisfies <span style='color: cyan'>{bound_f}</span> for <span style='color: cyan'>{mu &lt; 0}</span>.
+</td></tr>
+<tr><td class=line-number>82</td><td class=line>
+</td></tr>
+<tr><td class=line-number>83</td><td class=line>As the normal distribution is symmetric around its mean <span style='color: cyan'>{mu}</span>, the PDF of <span style='color: cyan'>{elpd_diff[SE]}</span>
+</td></tr>
+<tr><td class=line-number>84</td><td class=line>satisfies <span style='color: cyan'>{symm_p}</span> and because <span style='color: cyan'>{mu}</span> above is just <span style='color: cyan'>{elpd_diff_loo}</span>, which is also the mean
+</td></tr>
+<tr><td class=line-number>85</td><td class=line>of <span style='color: cyan'>{elpd_diff[SE]}</span>, all other preconditions of the first part are already satisfied for <span style='color: cyan'>{bound_SE}</span>.
+</td></tr>
+<tr><td class=line-number>86</td><td class=line>
+</td></tr>
+<tr><td class=line-number>87</td><td class=line>&lt;a name=&quot;proof-of-bound-fexefx&quot;&gt;&lt;/a&gt;
+</td></tr>
+<tr><td class=line-number>88</td><td class=line>#### proof of <span style='color: cyan'>{bound_fexefx}</span>
+</td></tr>
+<tr><td class=line-number>89</td><td class=line>
+</td></tr>
+<tr><td class=line-number>90</td><td class=line>Using the definition of the expectation
+</td></tr>
+<tr><td class=line-number>91</td><td class=line>yields for the right hand side of <span style='color: cyan'>{bound_fexefx}</span> that <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>92</td><td class=line><span style='color: green'>  E(f(X)) = Integral(f(x)*p(x), x, reals).</span>
+</td></tr>
+<tr><td class=line-number>93</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>94</td><td class=line>A linear change of variables yields <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>95</td><td class=line><span style='color: green'>  E(f(X)) = Integral(f(mu+x)*p(mu+x), x, reals)</span>
+</td></tr>
+<tr><td class=line-number>96</td><td class=line><span style='color: green'>}</span> and &quot;folding the integral at <span style='color: cyan'>{x=0}</span>&quot; yields <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>97</td><td class=line><span style='color: green'>  E(f(X)) = Integral(f(mu-x)*p(mu-x) + f(mu+x)*p(mu+x), x, nonnegative_reals)</span>
+</td></tr>
+<tr><td class=line-number>98</td><td class=line><span style='color: green'>}</span> which together with <span style='color: cyan'>{symm_p}</span> yields <span style='color: green'>{rhs_final:</span>
+</td></tr>
+<tr><td class=line-number>99</td><td class=line><span style='color: green'>  E(f(X)) = Integral((f(mu-x) + f(mu+x))*p(mu+x), x, nonnegative_reals).</span>
+</td></tr>
+<tr><td class=line-number>100</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>101</td><td class=line>For the left hand side of <span style='color: cyan'>{bound_fexefx}</span> we have that <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>102</td><td class=line><span style='color: green'>  f(E(X)) = f(mu)</span>
+</td></tr>
+<tr><td class=line-number>103</td><td class=line><span style='color: green'>}</span> but also <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>104</td><td class=line><span style='color: green'>  f(E(X)) = Integral(f(mu)*p(x),x,reals)</span>
+</td></tr>
+<tr><td class=line-number>105</td><td class=line><span style='color: green'>}</span> because <span style='color: cyan'>{p}</span> integrates to one as it is a PDF.
+</td></tr>
+<tr><td class=line-number>106</td><td class=line>After the same steps that were performed for the right hand side, we get <span style='color: green'>{lhs_final:</span>
+</td></tr>
+<tr><td class=line-number>107</td><td class=line><span style='color: green'>  f(E(X)) = Integral(2*f(mu)*p(mu+x),x,nonnegative_reals).</span>
+</td></tr>
+<tr><td class=line-number>108</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>109</td><td class=line>Comparing <span style='color: cyan'>{lhs_final}</span> and <span style='color: cyan'>{rhs_final}</span> we note that if <span style='color: cyan'>{bound_f}</span> holds,
+</td></tr>
+<tr><td class=line-number>110</td><td class=line>then <span style='color: cyan'>{bound_fexefx}</span> holds because then the integrand of the difference has a sign.
+</td></tr>
+<tr><td class=line-number>111</td><td class=line>
+</td></tr>
+<tr><td class=line-number>112</td><td class=line>&lt;a name=&quot;proof-of-bound-f&quot;&gt;&lt;/a&gt;
+</td></tr>
+<tr><td class=line-number>113</td><td class=line>#### proof of <span style='color: cyan'>{bound_f}</span>
+</td></tr>
+<tr><td class=line-number>114</td><td class=line>
+</td></tr>
+<tr><td class=line-number>115</td><td class=line>We now show that <span style='color: green'>{bound_logistic:</span>
+</td></tr>
+<tr><td class=line-number>116</td><td class=line><span style='color: green'>  2 * logistic(mu) &lt; logistic(mu-x) + logistic(mu+x)</span>
+</td></tr>
+<tr><td class=line-number>117</td><td class=line><span style='color: green'>}</span> for negative <span style='color: cyan'>{mu &lt; 0}</span> and positive <span style='color: cyan'>{x &gt; 0}</span>. Using <span style='color: cyan'>{def_logistic}</span> and combining
+</td></tr>
+<tr><td class=line-number>118</td><td class=line>all fractions to one we get <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>119</td><td class=line><span style='color: green'>  logistic(mu-x)+logistic(mu+x) - 2 * logistic(mu) = Num(mu,x)/Den(mu,x)</span>
+</td></tr>
+<tr><td class=line-number>120</td><td class=line><span style='color: green'>}</span> with <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>121</td><td class=line><span style='color: green'>  Num(mu,x) := Dt(mu-x)*Dt(mu) + Dt(mu+x)*Dt(mu) - 2*Dt(mu-x)*Dt(mu+x)</span>
+</td></tr>
+<tr><td class=line-number>122</td><td class=line><span style='color: green'>}</span> and <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>123</td><td class=line><span style='color: green'>  Den(mu,x) := Dt(mu+x)*Dt(mu-x)*Dt(mu) &gt; 0</span>
+</td></tr>
+<tr><td class=line-number>124</td><td class=line><span style='color: green'>}</span> using the abbreviation <span style='color: cyan'>{Dt(x) := 1+Exp(-x)}</span>.
+</td></tr>
+<tr><td class=line-number>125</td><td class=line>To show <span style='color: cyan'>{bound_logistic}</span> it is thus sufficient to show that <span style='color: cyan'>{Num(mu,x) &gt; 0}</span>
+</td></tr>
+<tr><td class=line-number>126</td><td class=line>for all <span style='color: cyan'>{mu &lt; 0 &lt; x}</span>.
+</td></tr>
+<tr><td class=line-number>127</td><td class=line>
+</td></tr>
+<tr><td class=line-number>128</td><td class=line>Expanding all products in the
+</td></tr>
+<tr><td class=line-number>129</td><td class=line>definition of <span style='color: cyan'>{Num(mu,x)}</span> yields <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>130</td><td class=line><span style='color: green'>  Num(mu,x) =</span>
+</td></tr>
+<tr><td class=line-number>131</td><td class=line><span style='color: green'>    + 2 * Exp(-mu)</span>
+</td></tr>
+<tr><td class=line-number>132</td><td class=line><span style='color: green'>    - 2 * Exp(-2*mu)</span>
+</td></tr>
+<tr><td class=line-number>133</td><td class=line><span style='color: green'>    + Exp(-2 * mu + x)</span>
+</td></tr>
+<tr><td class=line-number>134</td><td class=line><span style='color: green'>    - Exp(-mu+x)</span>
+</td></tr>
+<tr><td class=line-number>135</td><td class=line><span style='color: green'>    + Exp(-2 * mu - x)</span>
+</td></tr>
+<tr><td class=line-number>136</td><td class=line><span style='color: green'>    - Exp(-mu - x).</span>
+</td></tr>
+<tr><td class=line-number>137</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>138</td><td class=line>As <span style='color: cyan'>{Exp(mu) &gt; 0}</span> for all real numbers <span style='color: cyan'>{mu}</span> we get <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>139</td><td class=line><span style='color: green'> Num(mu,x) &gt; 0</span>
+</td></tr>
+<tr><td class=line-number>140</td><td class=line><span style='color: green'>  iff</span>
+</td></tr>
+<tr><td class=line-number>141</td><td class=line><span style='color: green'> Nt(mu,x) := Num(mu,x)*Exp(mu) &gt; 0.</span>
+</td></tr>
+<tr><td class=line-number>142</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>143</td><td class=line>We get <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>144</td><td class=line><span style='color: green'> Nt(mu, x) =</span>
+</td></tr>
+<tr><td class=line-number>145</td><td class=line><span style='color: green'>   2</span>
+</td></tr>
+<tr><td class=line-number>146</td><td class=line><span style='color: green'>   - 2 * Exp(-mu)</span>
+</td></tr>
+<tr><td class=line-number>147</td><td class=line><span style='color: green'>   + Exp(-mu+x)</span>
+</td></tr>
+<tr><td class=line-number>148</td><td class=line><span style='color: green'>   - Exp(x)</span>
+</td></tr>
+<tr><td class=line-number>149</td><td class=line><span style='color: green'>   + Exp(-mu - x)</span>
+</td></tr>
+<tr><td class=line-number>150</td><td class=line><span style='color: green'>   - Exp(-x).</span>
+</td></tr>
+<tr><td class=line-number>151</td><td class=line><span style='color: green'>}</span> Direct computation reveals that <span style='color: cyan'>{Nt(0,x) = 0}</span>.
+</td></tr>
+<tr><td class=line-number>152</td><td class=line>Furthermore we can compute <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>153</td><td class=line><span style='color: green'> Diff(Nt,mu)(mu,x) =</span>
+</td></tr>
+<tr><td class=line-number>154</td><td class=line><span style='color: green'>   + 2 * Exp(-mu)</span>
+</td></tr>
+<tr><td class=line-number>155</td><td class=line><span style='color: green'>   - Exp(-mu + x)</span>
+</td></tr>
+<tr><td class=line-number>156</td><td class=line><span style='color: green'>   - Exp(-mu - x) =</span>
+</td></tr>
+<tr><td class=line-number>157</td><td class=line><span style='color: green'>   Exp(-mu) * (</span>
+</td></tr>
+<tr><td class=line-number>158</td><td class=line><span style='color: green'>     2 - Exp(+x) - Exp(-x)</span>
+</td></tr>
+<tr><td class=line-number>159</td><td class=line><span style='color: green'>   ).</span>
+</td></tr>
+<tr><td class=line-number>160</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>161</td><td class=line>[Elementary analysis](https://www.wolframalpha.com/input?i=2-Exp%5Bx%5D-Exp%5B-x%5D) reveals that <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>162</td><td class=line><span style='color: green'> Diff(Nt,mu)(mu,x) &lt;= 0</span>
+</td></tr>
+<tr><td class=line-number>163</td><td class=line><span style='color: green'>}</span> with the inequality being strict if <span style='color: cyan'>{x != 0}</span>. From the
+</td></tr>
+<tr><td class=line-number>164</td><td class=line>  [fundamental theorem of calculus](https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus#Corollary)
+</td></tr>
+<tr><td class=line-number>165</td><td class=line>we have that <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>166</td><td class=line><span style='color: green'> Nt(mu,x) = Nt(0,x) + Integral(Diff(Nt,mu)(z,x), z, (0, mu))</span>
+</td></tr>
+<tr><td class=line-number>167</td><td class=line><span style='color: green'>}</span> for any real number mu. Using
+</td></tr>
+<tr><td class=line-number>168</td><td class=line> <span style='color: cyan'>{Diff(Nt,mu)(z,x) &lt;= 0}</span> almost everywhere,
+</td></tr>
+<tr><td class=line-number>169</td><td class=line> <span style='color: cyan'>{Nt(0,x) = 0}</span> and
+</td></tr>
+<tr><td class=line-number>170</td><td class=line> <span style='color: cyan'>{mu &lt; 0}</span>
+</td></tr>
+<tr><td class=line-number>171</td><td class=line>we can bound <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>172</td><td class=line><span style='color: green'> Nt(mu, x) &gt; Nt(0,x) - mu * eps(mu, x) &gt; 0</span>
+</td></tr>
+<tr><td class=line-number>173</td><td class=line><span style='color: green'>}</span> for some <span style='color: cyan'>{eps(mu, x) &gt; 0}</span>.
+</td></tr>
+</table>
+
+</body>
+

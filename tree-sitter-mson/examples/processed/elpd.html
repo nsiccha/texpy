@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>elpd</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h3 id="definitions">Definitions:</h3>
+<h4 id="elpd">ELPD</h4>
+<p>[ ( A , B | y ) = <em>{i} {}</em>{i} ( A , B | y )]</p>
+<p>[{}<em>{i} ( A , B | y ) =  , p ( {y}</em>{i} | A , {y}<em>{- i} ) -  , p ( {y}</em>{i} | B , {y}_{- i} )]</p>
+<p>[ ( A , B | y ) = ]</p>
+<h4 id="weights-for-many-models">weights for many models</h4>
+<p>[{w}<em>{k , } =  (  ( {}</em>{} ) )]</p>
+<p>[ ( x ) = ]</p>
+<h4 id="weights-for-two-model-case">weights for two model case</h4>
+<p>[{w}<em>{A , } =  (  ( {}</em>{} ) )] [ ( x ) = ]</p>
+<h4 id="methods">methods</h4>
+<ul>
+<li>The “point-estimate”-method uses [P ( {}_{} =  ) = 1]</li>
+<li>The “normal-approximation”-method uses [ ( {}_{} ) =  (  ,  )]</li>
+<li>The “Bayesian-bootstrap”-method uses [{}<em>{} = n , </em>{},] with [ ( {W}<em>{} ) =  ( {}</em>{n} )]</li>
+</ul>
+<h4 id="results">results</h4>
+<ul>
+<li>We chose the definitions such that [{w}_{A , } =  (  )]</li>
+<li>We can bound ({w}<em>{A , }) using ({w}</em>{A , }) if ({w}<em>{A , } &lt; ): [{w}</em>{A , } &lt; {w}<em>{A , } &lt; ] or equivalently if ({w}</em>{A , } &gt; ).</li>
+<li>Generally we <em>cannot</em> bound ({w}<em>{A , }) using ({w}</em>{A , }) or ({w}<em>{A , }), even though in practice we can Expect ({w}</em>{a , }) to be closer to () than ({w}_{A , }).</li>
+</ul>
+<h4 id="proofs">proofs</h4>
+<ul>
+<li>Direct computation.</li>
+<li>See <a href="#proof-for-the-normal-approximation">below</a>.</li>
+<li>Counterexamples can be constructed (for now see Slack).</li>
+</ul>
+<h4 id="proof-for-the-normal-approximation">proof for the normal approximation</h4>
+<p>The proof of () consists of two parts:</p>
+<ul>
+<li><a href="#proof-of-bound-fexefx">First we show</a> that given
+<ul>
+<li>a real number (),</li>
+<li>a function (f :  ) that satisfies [2 , f ( ) &lt; f ( - x ) + f ( + x )] for all positive numbers (x &gt; 0) and</li>
+<li>an RV (X) with mean () and PDF (p :  ^+_0) that satisfies [p ( - x ) = p ( + x )] for all positive numbers (x &gt; 0),</li>
+<li>the inequality [f (  ( X ) ) &lt;  ( f ( X ) )] holds (assuming ( ( f ( X ) )) “exists” which it does in our case).</li>
+</ul></li>
+<li><a href="#proof-of-bound-f">Next we show</a> that the logistic function satisfies () for (&lt; 0).</li>
+</ul>
+<p>As the normal distribution is symmetric around its mean (), the PDF of ({}<em>{}) satisfies () and because () above is just (), which is also the mean of ({}</em>{}), all other preconditions of the first part are already satisfied for ().</p>
+<p><a name="proof-of-bound-fexefx"></a> #### proof of ()</p>
+<p>Using the definition of the expectation yields for the right hand side of () that [ ( f ( X ) ) = <em>{} f ( x ) , p ( x ) , x] A linear change of variables yields [ ( f ( X ) ) = </em>{} f ( + x ) , p ( + x ) , x] and “folding the integral at (x = 0)” yields [ ( f ( X ) ) = <em>{<sup>+<em>0} f ( - x ) , p ( - x ) + f ( + x ) , p ( + x ) , x] which together with () yields [ ( f ( X ) ) = </em>{</sup>+<em>0} ( f ( - x ) + f ( + x ) ) , p ( + x ) , x] For the left hand side of () we have that [f (  ( X ) ) = f ( )] but also [f (  ( X ) ) = </em>{} f ( ) , p ( x ) , x] because (p) integrates to one as it is a PDF. After the same steps that were performed for the right hand side, we get [f (  ( X ) ) = </em>{^+_0} 2 , f ( ) , p ( + x ) , x] Comparing () and () we note that if () holds, then () holds because then the integrand of the difference has a sign.</p>
+<p><a name="proof-of-bound-f"></a> #### proof of ()</p>
+<p>We now show that [2 ,  ( ) &lt;  ( - x ) +  ( + x )] for negative (&lt; 0) and positive (x &gt; 0). Using () and combining all fractions to one we get [ ( - x ) +  ( + x ) - 2 ,  ( ) = ] with [ ( , x ) :=  ( - x ) ,  ( ) +  ( + x ) ,  ( ) - 2 ,  ( - x ) ,  ( + x )] and [ ( , x ) :=  ( + x ) ,  ( - x ) ,  ( ) &gt; 0] using the abbreviation ( ( x ) := 1 +  ( - x )). To show () it is thus sufficient to show that ( ( , x ) &gt; 0) for all (&lt; 0 &lt; x).</p>
+<p>Expanding all products in the definition of ( ( , x )) yields [ ( , x ) = + 2 ,  ( - ) - 2 ,  ( - 2 , ) +  ( - 2 , + x ) -  ( - + x ) +  ( - 2 , - x ) -  ( - - x )] As ( ( ) &gt; 0) for all real numbers () we get [ ( , x ) &gt; 0   ( , x ) :=  ( , x ) ,  ( ) &gt; 0] We get [ ( , x ) = 2 - 2 ,  ( - ) +  ( - + x ) -  ( x ) +  ( - - x ) -  ( - x )] Direct computation reveals that ( ( 0 , x ) = 0). Furthermore we can compute [ ( , x ) = + 2 ,  ( - ) -  ( - + x ) -  ( - - x ) =  ( - ) , ( 2 -  ( + x ) -  ( - x ) )] <a href="https://www.wolframalpha.com/input?i=2-Exp%5Bx%5D-Exp%5B-x%5D">Elementary analysis</a> reveals that [ ( , x ) ] with the inequality being strict if (x ). From the <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus#Corollary">fundamental theorem of calculus</a> we have that [ ( , x ) =  ( 0 , x ) + _{( 0 , )}  ( z , x ) , z] for any real number mu. Using ( ( z , x ) ) almost everywhere, ( ( 0 , x ) = 0) and (&lt; 0) we can bound [ ( , x ) &gt;  ( 0 , x ) - , ( , x ) &gt; 0] for some (( , x ) &gt; 0).</p>
+</body>
+</html>

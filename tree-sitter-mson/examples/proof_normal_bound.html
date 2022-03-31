@@ -1,0 +1,194 @@
+
+<!doctype HTML>
+<head>
+  <title>Tree-sitter Highlighting</title>
+  <style>
+    body {
+      font-family: monospace
+    }
+    .line-number {
+      user-select: none;
+      text-align: right;
+      color: rgba(27,31,35,.3);
+      padding: 0 10px;
+    }
+    .line {
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
+<table>
+<tr><td class=line-number>1</td><td class=line>### Proposition:
+</td></tr>
+<tr><td class=line-number>2</td><td class=line>
+</td></tr>
+<tr><td class=line-number>3</td><td class=line>Let
+</td></tr>
+<tr><td class=line-number>4</td><td class=line>  <span style='color: cyan'>{mu &lt; 0}</span> be a real number and
+</td></tr>
+<tr><td class=line-number>5</td><td class=line>  <span style='color: cyan'>{X}</span> be an RV with
+</td></tr>
+<tr><td class=line-number>6</td><td class=line>    PDF <span style='color: cyan'>{f_X}</span>,
+</td></tr>
+<tr><td class=line-number>7</td><td class=line>    <span style='color: cyan'>{E[X] = mu}</span> and
+</td></tr>
+<tr><td class=line-number>8</td><td class=line>    <span style='color: cyan'>{f_X(mu - dx)=f_X(mu + dx)}</span> for all real numbers dx.
+</td></tr>
+<tr><td class=line-number>9</td><td class=line>Then <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>10</td><td class=line><span style='color: green'>  logistic(mu) &lt; E[logistic(X)].</span>
+</td></tr>
+<tr><td class=line-number>11</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>12</td><td class=line>
+</td></tr>
+<tr><td class=line-number>13</td><td class=line>### Proof:
+</td></tr>
+<tr><td class=line-number>14</td><td class=line>
+</td></tr>
+<tr><td class=line-number>15</td><td class=line>For sake of brevity we introduce <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>16</td><td class=line><span style='color: green'>  w(x) := logistic(x) = 1/(1+exp(-x)).</span>
+</td></tr>
+<tr><td class=line-number>17</td><td class=line><span style='color: green'>}</span> The expectation of w(X) = logistic(X) is defined as <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>18</td><td class=line><span style='color: green'>  E[w(X)] = Integral(w(z)*f_X(z), z, (-infinity, +infinity)).</span>
+</td></tr>
+<tr><td class=line-number>19</td><td class=line><span style='color: green'>}</span> A linear change of variables yields <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>20</td><td class=line><span style='color: green'>  E[w(X)] = Integral(w(mu+z)*f_X(mu+z), z, (-infinity, +infinity))</span>
+</td></tr>
+<tr><td class=line-number>21</td><td class=line><span style='color: green'>}</span> and &quot;folding the integral at z=0&quot; yields <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>22</td><td class=line><span style='color: green'>  E[w(X)] = Integral((w(mu+z)+w(mu-z))*f_X(mu+z), z, (0, +infinity))</span>
+</td></tr>
+<tr><td class=line-number>23</td><td class=line><span style='color: green'>}</span> where we used the symmetry of <span style='color: cyan'>{f_X}</span> around <span style='color: cyan'>{mu}</span>.
+</td></tr>
+<tr><td class=line-number>24</td><td class=line>
+</td></tr>
+<tr><td class=line-number>25</td><td class=line>To show that <span style='color: cyan'>{E[w(X)] &gt; w(mu)}</span> it is sufficient to show that<span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>26</td><td class=line><span style='color: green'>  w(mu+z)+w(mu-z) &gt; 2*w(mu)</span>
+</td></tr>
+<tr><td class=line-number>27</td><td class=line><span style='color: green'>}</span> almost everywhere for fixed <span style='color: cyan'>{mu}</span> because then <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>28</td><td class=line><span style='color: green'>  E[w(X)] =</span>
+</td></tr>
+<tr><td class=line-number>29</td><td class=line><span style='color: green'>    Integral((w(mu+z)+w(mu-z))*f_X(mu+z), z, (0, +infinity)) &gt; Integral(2*w(mu)*f_X(mu+z), z, (0, +infinity))</span>
+</td></tr>
+<tr><td class=line-number>30</td><td class=line><span style='color: green'>    = w(mu).</span>
+</td></tr>
+<tr><td class=line-number>31</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>32</td><td class=line>We now show that <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>33</td><td class=line><span style='color: green'>  w(mu+z) + w(mu-z) &gt; 2 * w(mu)</span>
+</td></tr>
+<tr><td class=line-number>34</td><td class=line><span style='color: green'>}</span> for negative mu and nonzero real z.
+</td></tr>
+<tr><td class=line-number>35</td><td class=line>Using the definition of w and combining all fractions to one we get<span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>36</td><td class=line><span style='color: green'>  w(mu+z) + w(mu-z) - 2 * w(mu) = N(mu,z)/D(mu,z)</span>
+</td></tr>
+<tr><td class=line-number>37</td><td class=line><span style='color: green'>}</span> with<span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>38</td><td class=line><span style='color: green'>  N(mu,z) = wD(mu-z)*wD(mu) + wD(mu+z)*wD(mu) - 2*wD(mu-z)*wD(mu+z)</span>
+</td></tr>
+<tr><td class=line-number>39</td><td class=line><span style='color: green'>}</span> and <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>40</td><td class=line><span style='color: green'>  D(mu,z) = wD(mu+z)*wD(mu-z)*wD(mu) &gt; 0</span>
+</td></tr>
+<tr><td class=line-number>41</td><td class=line><span style='color: green'>}</span> using the abbreviation <span style='color: cyan'>{wD(mu) := 1+exp(-mu)}</span>. To show that <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>42</td><td class=line><span style='color: green'>  w(mu+z) + w(mu-z) &gt; 2 * w(mu)</span>
+</td></tr>
+<tr><td class=line-number>43</td><td class=line><span style='color: green'>}</span>  for nonzero z it is sufficient to show that <span style='color: cyan'>{N(mu,z) &gt; 0}</span>. Expanding all products in the
+</td></tr>
+<tr><td class=line-number>44</td><td class=line>definition of <span style='color: cyan'>{N(mu,z)}</span> yields <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>45</td><td class=line><span style='color: green'>  N(mu,z) =</span>
+</td></tr>
+<tr><td class=line-number>46</td><td class=line><span style='color: green'>    + 2 * exp(-mu)</span>
+</td></tr>
+<tr><td class=line-number>47</td><td class=line><span style='color: green'>    - 2 * exp(-2*mu)</span>
+</td></tr>
+<tr><td class=line-number>48</td><td class=line><span style='color: green'>    + exp(-2 * mu + z)</span>
+</td></tr>
+<tr><td class=line-number>49</td><td class=line><span style='color: green'>    - exp(-mu+z)</span>
+</td></tr>
+<tr><td class=line-number>50</td><td class=line><span style='color: green'>    + exp(-2 * mu - z)</span>
+</td></tr>
+<tr><td class=line-number>51</td><td class=line><span style='color: green'>    - exp(-mu - z).</span>
+</td></tr>
+<tr><td class=line-number>52</td><td class=line><span style='color: green'>}</span> As <span style='color: cyan'>{exp(mu) &gt; 0}</span> for all real numbers mu we get <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>53</td><td class=line><span style='color: green'>  N(mu,z) &gt;= 0</span>
+</td></tr>
+<tr><td class=line-number>54</td><td class=line><span style='color: green'>}</span> iff <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>55</td><td class=line><span style='color: green'>  Nt(mu,z) := N(mu,z)*exp(mu) &gt;= 0.</span>
+</td></tr>
+<tr><td class=line-number>56</td><td class=line><span style='color: green'>}</span> We get <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>57</td><td class=line><span style='color: green'>  Nt(mu, z) =</span>
+</td></tr>
+<tr><td class=line-number>58</td><td class=line><span style='color: green'>    2</span>
+</td></tr>
+<tr><td class=line-number>59</td><td class=line><span style='color: green'>    - 2 * exp(-mu)</span>
+</td></tr>
+<tr><td class=line-number>60</td><td class=line><span style='color: green'>    + exp(-mu+z)</span>
+</td></tr>
+<tr><td class=line-number>61</td><td class=line><span style='color: green'>    - exp(z)</span>
+</td></tr>
+<tr><td class=line-number>62</td><td class=line><span style='color: green'>    + exp(-mu - z)</span>
+</td></tr>
+<tr><td class=line-number>63</td><td class=line><span style='color: green'>    - exp(-z).</span>
+</td></tr>
+<tr><td class=line-number>64</td><td class=line><span style='color: green'>}</span> Direct computation reveals that <span style='color: cyan'>{Nt(0,z) = 0}</span>. Furthermore we can compute <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>65</td><td class=line><span style='color: green'>  dNt/dmu(mu,z) =</span>
+</td></tr>
+<tr><td class=line-number>66</td><td class=line><span style='color: green'>    + 2 * exp(-mu)</span>
+</td></tr>
+<tr><td class=line-number>67</td><td class=line><span style='color: green'>    - exp(-mu + z)</span>
+</td></tr>
+<tr><td class=line-number>68</td><td class=line><span style='color: green'>    - exp(-mu - z) =</span>
+</td></tr>
+<tr><td class=line-number>69</td><td class=line><span style='color: green'>    exp(-mu) * (</span>
+</td></tr>
+<tr><td class=line-number>70</td><td class=line><span style='color: green'>      2 - exp(+z) - exp(-z)</span>
+</td></tr>
+<tr><td class=line-number>71</td><td class=line><span style='color: green'>    ).</span>
+</td></tr>
+<tr><td class=line-number>72</td><td class=line><span style='color: green'>}</span>
+</td></tr>
+<tr><td class=line-number>73</td><td class=line>Elementary analysis reveals <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>74</td><td class=line><span style='color: green'>  dNt/dmu(mu,z) &lt;= 0</span>
+</td></tr>
+<tr><td class=line-number>75</td><td class=line><span style='color: green'>}</span> with the inequality being strict if <span style='color: cyan'>{z != 0}</span>. From the fundamental theorem of calculus
+</td></tr>
+<tr><td class=line-number>76</td><td class=line>we have that <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>77</td><td class=line><span style='color: green'>  Nt(mu,z) = Nt(0,z) + Integral(dNt/dmu(x,z), x, (0, mu))</span>
+</td></tr>
+<tr><td class=line-number>78</td><td class=line><span style='color: green'>}</span> for any real number mu. Using
+</td></tr>
+<tr><td class=line-number>79</td><td class=line>  <span style='color: cyan'>{dNt/dmu(x,z) &lt;= 0}</span> almost everywhere,
+</td></tr>
+<tr><td class=line-number>80</td><td class=line>  <span style='color: cyan'>{Nt(0,z) = 0}</span> and
+</td></tr>
+<tr><td class=line-number>81</td><td class=line>  <span style='color: cyan'>{mu &lt; 0}</span>
+</td></tr>
+<tr><td class=line-number>82</td><td class=line>we can bound <span style='color: green'>{</span>
+</td></tr>
+<tr><td class=line-number>83</td><td class=line><span style='color: green'>  Nt(mu, z) &gt; Nt(0,z) - mu * eps(mu, z) &gt; 0</span>
+</td></tr>
+<tr><td class=line-number>84</td><td class=line><span style='color: green'>}</span> for some <span style='color: cyan'>{eps(mu, z) &gt; 0}</span>.
+</td></tr>
+</table>
+
+</body>
+

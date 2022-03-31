@@ -161,6 +161,9 @@ struct Scanner {
         advance(lexer);
         has_content = true;
       }
+      lexer->mark_end(lexer);
+      lexer->result_symbol = TEXT_TOKEN;
+      return has_content;
     }
     return false;
 
